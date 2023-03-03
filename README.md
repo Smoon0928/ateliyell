@@ -16,25 +16,24 @@
 
 自分自身がファッションの専門学校卒業をしており、才能のある人物が一般企業に埋もれていくのが勿体無いと感じたのが、このツールを作成したいと考えたきっかけです。
 
-アトリエールは、ファッションの専門学生が自分の作品を投稿し、ポートフォリオとして利用、また自分の作品を販売することができます。
-自分の作品が実際に消費者に購入されることで、モチベーションの向上、またその個人のファンを増やすことが可能です。
-消費者は専門学生のオリジナル、この世に1つしかない作品を購入できるという付加価値があります。
+アトリエールは、ファッションの専門学生が自分の作品を投稿し、ポートフォリオとして利用することができます。
+自分の作品を評価されることで、モチベーションの向上、またその個人のファンを増やすことが可能です。
 
-将来的にビジネスとして広げられる構想として、パトロン制度の導入 他専門学生への展開 、投稿をみた企業から学生に対して、就職やインターンのスカウトが行えることを考えています。
+将来的にビジネスとして広げられる構想として、作品が購入可能、パトロン制度の導入、他専門学生への展開 、投稿をみた企業から学生に対して、就職やインターンのスカウトが行えることを考えています。
 
 
 ### ターゲットユーザ
 - ファッションの専門学生
-- 人と被りたくない、センスがあるファッションアイテムが欲しい消費者
 
 ### 主な利用シーン
 - 専門学生のポートフォリオとして利用
-- お洒落な消費者の買い物のツールとして利用
 
 ## 設計書
-- ER図　https://app.diagrams.net/#G1PaqmW3t0WXE02rsxTqmiFhLcIOuwHddI
-- uiflows会員側  https://app.diagrams.net/#G17qI20tGIRfyqR5rIVtV5q_WuGDQi5Ils
+- ER図　https://app.diagrams.net/#G1eCVMZWTCKnwjVXyTvW4VumvAxAI1luxk
+- uiflows会員側  https://app.diagrams.net/#G1YjMUjtdGXexpdQOuCPJc0XD8wgPwRCSf
 - uiflows管理者側 https://app.diagrams.net/#G1Jzvjpl520hm9o3KD4COPXvI29MHAsvlz
+- ワイヤーフレーム会員側 https://app.diagrams.net/?libs=general;mockups#G1BOlxglbmXGP5wrTr0TCCMiK1_22v1N6t
+- ワイヤーフレーム管理者側 https://app.diagrams.net/?libs=general;mockups#G1Os89cAlVGuu8BiTfFzu8TLnVMrK0uD9c
 
 ## 開発環境
 - OS：Linux(CentOS)
