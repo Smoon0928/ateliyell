@@ -34,6 +34,7 @@
 - uiflows管理者側 https://app.diagrams.net/#G1Jzvjpl520hm9o3KD4COPXvI29MHAsvlz
 - ワイヤーフレーム会員側 https://app.diagrams.net/?libs=general;mockups#G1BOlxglbmXGP5wrTr0TCCMiK1_22v1N6t
 - ワイヤーフレーム管理者側 https://app.diagrams.net/?libs=general;mockups#G1Os89cAlVGuu8BiTfFzu8TLnVMrK0uD9c
+- テーブル定義書 https://docs.google.com/spreadsheets/d/1tVtnUE_F0rNfuJmGnM-Z0bOqtn1jLMGY/edit#gid=1243549839
 
 ## 開発環境
 - OS：Linux(CentOS)
