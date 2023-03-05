@@ -1,6 +1,15 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="cotainer px-5 px-sm-0">
+  <div class="mt-5">
+    <h2>ログイン</h2>
+  </div>
+  
+  <div class="mt-4">
+    <h4>会員の方はこちらからログイン</h4>
+  </div>
+  
+  <div class="offset-md-1 mt-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -19,7 +28,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in",class: 'btn btn-primary btn-sm' %>
   </div>
 <% end %>
 
