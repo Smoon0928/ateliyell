@@ -1,2 +1,16 @@
-<h1>Public::Products#index</h1>
-<p>Find me in app/views/public/products/index.html.erb</p>
+<h1>投稿一覧</h1>
+<% @products.each do |product| %>
+
+  <p>タイトル</p>
+  <span>
+    <%=link_to product.title, product_path(product.id) %>
+  </span>
+  
+  <p>投稿画像</p>
+  <% if product.image.attached? %>
+    <%= image_tag product.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag "no_image",size: "200x200" %>
+  <% end %>
+  
+<% end %>
