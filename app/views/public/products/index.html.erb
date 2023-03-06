@@ -3,14 +3,15 @@
 
   <p>タイトル</p>
   <span>
-    <%=link_to product.title, product_path(product.id) %>
+    <%=link_to product.name, product_path(product.id) %>
   </span>
   
   <p>投稿画像</p>
-  <% if product.image.attached? %>
-    <%= image_tag product.image, size: "200x200" %>
+  <% if product.images.attached? %>
+    <%= image_tag product.images.first, size: "200x200" %>
   <% else %>
     <%= image_tag "no_image",size: "200x200" %>
   <% end %>
   
+
 <% end %>

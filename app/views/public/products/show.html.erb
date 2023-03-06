@@ -1,2 +1,11 @@
 <h1>Public::Products#show</h1>
 <p>Find me in app/views/public/products/show.html.erb</p>
+
+<p>投稿画像</p>
+  <% if product.images.attached? %>
+   <% product.images.each do |image| %>
+    <%= image_tag image, size: "200x200" %>
+  <% end %>
+  <% else %>
+    <%= image_tag "no_image",size: "200x200" %>
+  <% end %>
