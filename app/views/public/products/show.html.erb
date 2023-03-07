@@ -1,11 +1,33 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
 
-<p>投稿画像</p>
-  <% if product.images.attached? %>
-   <% product.images.each do |image| %>
-    <%= image_tag image, size: "200x200" %>
-  <% end %>
-  <% else %>
-    <%= image_tag "no_image",size: "200x200" %>
-  <% end %>
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-3'>
+        
+      <h2>User info</h2>
+      <%= render 'public/users/info',user:current_user %>
+    </div>
+    <div class='col-md-8 ofset-md-1'>
+    
+      <% if @product.images.attached? %>
+       <% @product.images.each do |image| %>
+        <%= image_tag image, size: "200x200" %>
+      <% end %>
+      <% else %>
+        <%= image_tag "no_image",size: "200x200" %>
+      <% end %>
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto">
+            <%= link_to "作家をフォローする", class: "btn btn-light" %>
+            <%= link_to "♡エールを送る", class: "btn btn-light" %>
+            <%= link_to "編集する",edit_product_path(@product.id), class: "btn btn-success" %>
+            <%= link_to "削除",product_path(@product.id),method: :delete, "data-confirm"=>"本当に削除しますか？", class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+       <table class= "table">
+         <tr>
+           <td>作品説明</td>
+           <td><%= @product.introduction %></td>
+         </tr>
+       </table>

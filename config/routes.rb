@@ -22,9 +22,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
    
-    resources :products,only:[:index,:new,:create,:update,:show,:edit]
+    resources :products,only:[:index,:new,:create,:update,:show,:edit,:destroy]
     resources :users,only:[:show,:edit,:update,:unsubscribe,:withdraw]
-  
   end
 
 

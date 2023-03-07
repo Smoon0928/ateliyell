@@ -1,2 +1,13 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div>
+  <h3><%= @user.user_name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+
+<% @product.images.each do |image| %>
+  <div>
+  <%= link_to product_path(product.id) do %>
+     <%= image_tag image, size: "200x200" %>
+  <% end %>
+ 
