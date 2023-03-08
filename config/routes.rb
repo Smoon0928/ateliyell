@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
   # admin用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
@@ -17,13 +22,16 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'homes#top'
     resources :genres,only:[:index,:create,:edit,:update]
+    resources :products,only:[:index,:update,:show,:edit,:destroy]
+    resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]
   end
+
   
 
   scope module: :public do
    
     resources :products,only:[:index,:new,:create,:update,:show,:edit,:destroy]
-    resources :users,only:[:show,:edit,:update,:unsubscribe,:withdraw]
+    resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]
   end
 
 

@@ -29,7 +29,7 @@
           <%= link_to '作品投稿', new_product_path, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
-          <%= link_to '商品一覧', products_path, class: 'nav-link text-dark' %>
+          <%= link_to '作品一覧', products_path, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
           <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
@@ -54,6 +54,12 @@
         </li>
         <li class= "nav-item">
           <%= link_to "ジャンル一覧",admin_genres_path,class: 'nav-link text-dark' %>
+        </li>
+        <li class= "nav-item">
+          <%= link_to "会員一覧",admin_users_path,class: 'nav-link text-dark' %>
+        </li>
+        <li class= "nav-item">
+          <%= link_to "作品一覧",admin_products_path,class: 'nav-link text-dark' %>
         </li>
          <li class="nav-item">
           <%=link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'nav-link text-dark' %>

@@ -7,11 +7,16 @@
       <%= render 'public/users/info',user:current_user %>
     </div>
     <div class='col-md-8 ofset-md-1'>
-    
       <% if @product.images.attached? %>
-       <% @product.images.each do |image| %>
-        <%= image_tag image, size: "200x200" %>
-      <% end %>
+        <div>
+          
+          <%= image_tag @selected_image, size: "400x400" %>
+        </div>
+        <% @product.images.each_with_index do |image, i| %>
+          <%= link_to product_path(@product, image_index: i) do %>
+            <%= image_tag image, size: "150x150" %>
+          <% end %>
+        <% end %>
       <% else %>
         <%= image_tag "no_image",size: "200x200" %>
       <% end %>

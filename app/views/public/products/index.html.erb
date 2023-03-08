@@ -8,11 +8,9 @@
   </span>
   
   <p>投稿画像</p>
-  <% if product.images.attached? %>
-    <%= image_tag product.images.first, size: "200x200" %>
-  <% else %>
-    <%= image_tag "no_image",size: "200x200" %>
-  <% end %>
+    <% if product.images.first.present? %>
+      <%= image_tag product.images.first, size: "200x200" %>
+    <% end %>
   
 
 <% end %>

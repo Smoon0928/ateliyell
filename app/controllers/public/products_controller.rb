@@ -9,7 +9,7 @@ class Public::ProductsController < ApplicationController
 
   def create
     @product=Product.new(product_params)
-    if @product.save!
+    if @product.save
       redirect_to '/products'
     else
       render :new
@@ -24,6 +24,13 @@ class Public::ProductsController < ApplicationController
 
   def show
     @product=Product.find(params[:id])
+    
+    @selected_image = if params[:image_index].present?
+      index = params[:image_index].to_i
+      @product.images[index]
+    else
+      @product.images.first
+    end
   end
 
   def edit
@@ -38,7 +45,7 @@ class Public::ProductsController < ApplicationController
   
   private
   def product_params
-    params.require(:product).permit(:name, :introduction, :genre_id, :user_id , images:[])
+    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, images: [])
   end
   
 end

@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
   def show
     @user=User.find(params[:id])
-    @product_images=@user.profile_image
+    @profile_image=@user.profile_image
+    @product=Product.find(params[:id])
   end
 
   def edit
@@ -9,12 +10,16 @@ class Public::UsersController < ApplicationController
   end
 
   def update
+    @user=User.find(params[:id])
     if @user.update(user_params)
-      render_to user_path(@user), notice: "プロフィール情報の更新が成功しました"
-    else
-      render "edit"
-    end
+       flash[:success] = "プロフィール情報の更新が成功しました"
+          redirect_to user_path(@user)
+        else
+          flash[:danger] = "プロフィール情報の更新に失敗しました"
+          render"edit"
+        end
   end
+    
 
   def unsubscribe
   end

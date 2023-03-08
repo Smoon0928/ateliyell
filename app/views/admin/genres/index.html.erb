@@ -1,18 +1,25 @@
-<h2><span class="bg-light">ジャンル一覧・追加</span></h2>
+<div class="container px-5 px-sm-0">
+ <div class="row" style="margin-top:25px;">
+  <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+    <h4><span class="bg-light">ジャンル一覧・追加</span></h4>
+  </div>
   <div class>
     <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
-      <%=f.label :"ジャンル名" %>
-      <%=f.text_field :name, placeholder: "ジャンル名" %>
-      <%=f.submit "新規登録",class: 'btn btn-success' %>
+      <div class="form-group mb-5">
+        <%=f.label :"ジャンル名" %>
+        <%=f.text_field :name, placeholder: "ジャンル名" %>
+        <%=f.submit "新規登録",class: 'btn btn-success' %>
+      </div>
     <% end %>
   </div>
   
-  <div class>
-     <table class=table>
-       <thead>
-         <tr>
-           <th><th>
+  <div class="col-sm-7 px-sm-0 mx-auto mb-5">
+    <table class="table">
+      <thead class="table-active">
+        <tr>
+          <th><th>
            <th>ジャンル</th>
+           <th colspan=""></th>
          </tr>
         </thead>
         <tbody>
@@ -23,4 +30,5 @@
             </tr>
           <% end %>
         </tbody>
-      </table>
+    </table>
+  </div>
