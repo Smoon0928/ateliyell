@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
   def index
+    @products=Product.all
   end
   
   def show
@@ -13,7 +14,7 @@ class Admin::ProductsController < ApplicationController
   
    private
   
-  def admin_item_params
-    params.require(:product).permit(:name, :introduction,  :image, :genre_id)
+  def admin_product_params
+    params.require(:product).permit(:name, :introduction, :image, :genre_id, :genre_name, :user_name)
   end
 end

@@ -1,0 +1,28 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-11 col-lg-8  mx-auto">
+   <br>
+     <h4><span class="bg-light">作品一覧<span></h4>
+      <table class='table'>
+       <thead class="table table-light">
+        <tr>
+          <th>作品名</th>
+          <th>投稿ユーザー</th>
+          <th>ジャンル</th>
+          <th>いいね数</th>
+        </tr>
+       </thead>
+       <tbody>
+         <% @products.each do |product| %>
+           <tr>
+             <td><%= link_to product.name,admin_product_path(product.id) %></td>
+             <td><%= link_to product.user.user_name,admin_user_path(user.id) %></td>
+             <td><%= product.genre.name %></td>
+             <td><td>
+           </tr>
+         <% end %>
+       </tbody>
+      </table>
+     
+           
+                  
