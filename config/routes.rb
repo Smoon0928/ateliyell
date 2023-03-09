@@ -30,9 +30,13 @@ Rails.application.routes.draw do
 
   scope module: :public do
    
-    resources :products,only:[:index,:new,:create,:update,:show,:edit,:destroy]
+    resources :products,only:[:index,:new,:create,:update,:show,:edit,:destroy]do
+    resources :comments, only: [:create]
+   end
     resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]
+    
   end
+ 
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

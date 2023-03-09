@@ -24,6 +24,7 @@ class Public::ProductsController < ApplicationController
 
   def show
     @product=Product.find(params[:id])
+    @comment = Comment.new
     
     @selected_image = if params[:image_index].present?
       index = params[:image_index].to_i
