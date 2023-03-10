@@ -1,14 +1,14 @@
 class Public::ProductsController < ApplicationController
   def index
-    @products=Product.all
+    @products = Product.all
   end
 
   def new
-    @product=Product.new
+    @product = Product.new
   end
 
   def create
-    @product=Product.new(product_params)
+    @product = Product.new(product_params)
     if @product.save
       redirect_to '/products'
     else
@@ -17,15 +17,14 @@ class Public::ProductsController < ApplicationController
   end
 
   def update
-    product=Product.find(params[:id])
+    product = Product.find(params[:id])
     product.update(product_params)
     redirect_to product_path(product.id)
   end
 
   def show
-    @product=Product.find(params[:id])
+    @product = Product.find(params[:id])
     @comment = Comment.new
-    
     @selected_image = if params[:image_index].present?
       index = params[:image_index].to_i
       @product.images[index]
@@ -33,6 +32,7 @@ class Public::ProductsController < ApplicationController
       @product.images.first
     end
   end
+  
 
   def edit
     @product = Product.find(params[:id])

@@ -27,6 +27,22 @@
             <%= link_to "♡エールを送る", class: "btn btn-light" %>
             <%= link_to "編集する",edit_product_path(@product.id), class: "btn btn-success" %>
             <%= link_to "削除",product_path(@product.id),method: :delete, "data-confirm"=>"本当に削除しますか？", class: "btn btn-danger" %>
+          
+          <%# カリキュラムのいいね機能実装　%>
+            <% if @product.liked_by?(current_user) %>
+              <p>
+                <%= link_to product_likes_path(@product), method: :delete do %>
+                  ♥<%= @product.likes.count %> いいね
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to product_likes_path(@product), method: :post do %>
+                  ♡<%= @product.likes.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
+         
           </div>
         </div>
       </div>
