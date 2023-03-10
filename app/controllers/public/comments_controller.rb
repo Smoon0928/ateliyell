@@ -7,6 +7,11 @@ class Public::CommentsController < ApplicationController
     comment.save
     redirect_to product_path(product)
   end
+  
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to product_path(params[:product_id])
+  end
 
   private
 

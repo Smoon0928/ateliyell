@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   scope module: :public do
    
     resources :products,only:[:index,:new,:create,:update,:show,:edit,:destroy]do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
    end
     resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]
     
