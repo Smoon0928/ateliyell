@@ -42,6 +42,12 @@
                 <% end %>
               </p>
             <% end %>
+            <%# 参考資料のフォロー。フォロワー機能実装　%>
+            <% if current_user.following?(@product.user) %>
+              <%= link_to "フォロー外す", follow_path(user_id:@product.user_id), method: :delete %>
+            <% else %>
+              <%= link_to "フォローする", unfollow_path(user_id:@product.user_id), method: :post %>
+            <% end %>
          
           </div>
         </div>

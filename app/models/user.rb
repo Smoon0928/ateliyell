@@ -8,6 +8,12 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  #フォロー、フォロワー機能のアソシエーション
+  has_many :friends, class_name: "Friend", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_friends, class_name: "Friend", foreign_key: "follow_id", dependent: :destroy
+  #フォロー、フォロワー機能のアソシエーション(一覧画面で使用)
+  has_many :followings, through: :friends, source: :follow
+  has_many :followers, through: :reverse_of_friends, source: :follower
   
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -17,11 +23,26 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
   
-  def followings
-    []
+  # フォローしたときの処理
+  def follow(user_id)
+    friends.create(follow_id: user_id)
   end
-  
-  def followers
-    [1, 2]
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    friends.find_by(follow_id: user_id).destroy
+  end
+  # フォローしているか判定
+  def following?(user)
+    followings.include?(user)
   end
 end
+  
+  #仮設定のフォローフォロワー記述
+  #def followings
+    #[]
+  #end
+  
+  #def followers
+    #[1, 2]
+  #end
+

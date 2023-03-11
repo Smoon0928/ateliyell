@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  namespace :public do
+    get 'friends/followings'
+    get 'friends/followers'
+  end
   namespace :admin do
     get 'users/index'
     get 'users/show'
@@ -35,7 +39,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
    end
     resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]
-    
+    resource :friends, only: [:create, :destroy]
+    post 'friends/:user_id' => 'friends#create', as:'follow'
+    delete 'friends/:user_id' => 'friends#destroy', as:'unfollow'
+    get 'followings' => 'friends#followings', as: 'followings'
+    get 'followers' => 'friends#followers', as: 'followers'
   end
  
 
