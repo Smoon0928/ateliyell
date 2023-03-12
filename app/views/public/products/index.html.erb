@@ -1,8 +1,10 @@
 <div class="container p-5">
   <h2>投稿一覧</h2>
-  
-  <div class="container">
-    <div class="row row-cols-1 row-cols-3">
+
+
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-3 mt-4">
 
       <% @products.each do |product| %>
         <!-- First column -->
@@ -15,9 +17,8 @@
             </div>
             <div class="card-body">
               <h5 class="card-title"><%=link_to product.name, product_path(product.id) %></h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#!" class="btn btn-primary">Button</a>
+              <p class="card-text"><%=product.introduction %></p>
+              <%= link_to "作品の詳細を見る",product_path(product.id), class: "btn btn-success" %>
             </div>
           </div>
         </div>
@@ -25,10 +26,5 @@
 
     </div>
   </div>
-
-
-
-
-
 
 

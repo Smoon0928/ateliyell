@@ -24,6 +24,7 @@ class Public::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @user = User.find(@product.user.id)
     @comment = Comment.new
     @selected_image = if params[:image_index].present?
       index = params[:image_index].to_i
@@ -46,7 +47,7 @@ class Public::ProductsController < ApplicationController
   
   private
   def product_params
-    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, images: [])
+    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image, images: [])
   end
   
 end

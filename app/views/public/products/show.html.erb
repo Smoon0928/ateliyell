@@ -20,11 +20,21 @@
       <% else %>
         <%= image_tag "no_image",size: "200x200" %>
       <% end %>
+    </div>
       <div class="container">
         <div class="row">
           <div class="mx-auto">
-            
+            <%= image_tag @user.get_profile_image(100,100) %>
+            <%= @user.user_name %>
+            <br>
+            <%= @product.name %>
+            <br>
+            ♡エール数:<%= @product.likes.count %> 
+            <br>
+            ジャンル名:<%= @product.genre.name %>
+            <br>
             <%= link_to "編集する",edit_product_path(@product.id), class: "btn btn-success" %>
+            <br>
             <%= link_to "削除",product_path(@product.id),method: :delete, "data-confirm"=>"本当に削除しますか？", class: "btn btn-danger" %>
           
           <%# カリキュラムのいいね機能実装　%>
