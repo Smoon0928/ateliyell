@@ -1,6 +1,8 @@
 <div>
   <h3><%= @user.user_name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
+  <%= link_to "プロフィールを編集する",edit_user_path(@user.id), class: "btn btn-success" %>
+  <%= @user.self_introduction %>
 </div>
 
 <!-- ユーザーの投稿一覧 -->

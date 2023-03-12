@@ -23,30 +23,29 @@
       <div class="container">
         <div class="row">
           <div class="mx-auto">
-            <%= link_to "作家をフォローする", class: "btn btn-light" %>
-            <%= link_to "♡エールを送る", class: "btn btn-light" %>
+            
             <%= link_to "編集する",edit_product_path(@product.id), class: "btn btn-success" %>
             <%= link_to "削除",product_path(@product.id),method: :delete, "data-confirm"=>"本当に削除しますか？", class: "btn btn-danger" %>
           
           <%# カリキュラムのいいね機能実装　%>
             <% if @product.liked_by?(current_user) %>
               <p>
-                <%= link_to product_likes_path(@product), method: :delete do %>
-                  ♥<%= @product.likes.count %> いいね
+                <%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :delete do %>
+                  ♥<%= @product.likes.count %> いいね済み
                 <% end %>
               </p>
               <% else %>
               <p>
-                <%= link_to product_likes_path(@product), method: :post do %>
-                  ♡<%= @product.likes.count %> いいね
+                <%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :post do %>
+                  ♡<%= @product.likes.count %> いいねする
                 <% end %>
               </p>
             <% end %>
-            <%# 参考資料のフォロー。フォロワー機能実装　%>
+            <%# 参考資料のフォロー、フォロワー機能実装　%>
             <% if current_user.following?(@product.user) %>
-              <%= link_to "フォロー外す", follow_path(user_id:@product.user_id), method: :delete %>
+              <%= link_to "フォロー外す", follow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :delete %>
             <% else %>
-              <%= link_to "フォローする", unfollow_path(user_id:@product.user_id), method: :post %>
+              <%= link_to "フォローする", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :post %>
             <% end %>
          
           </div>

@@ -10,13 +10,13 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @use = User.find(params[:id])
+    @user = User.find(params[:id])
     if @user.update(user_params)
        flash[:success] = "プロフィール情報の更新が成功しました"
         redirect_to user_path(@user)
     else
       flash[:danger] = "プロフィール情報の更新に失敗しました"
-        render"edit"
+        render :edit
     end
   end
     
@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
   
    private
   def user_params
-    params.require(:user).permit(:name, :self_introduction, :genre_id, :user_id ,:user_name , :product, images:[])
+    params.require(:user).permit(:name, :self_introduction, :genre_id, :user_id ,:user_name , :product, :profile_image, images:[])
   end
   
 end
