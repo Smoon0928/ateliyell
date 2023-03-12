@@ -4,11 +4,11 @@
 
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-3 mt-4">
+    <div class="row row-cols-1 row-cols-3">
 
       <% @products.each do |product| %>
         <!-- First column -->
-        <div class="col">
+        <div class="col mt-4">
           <div class="card">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <% if product.images.first.present? %>
