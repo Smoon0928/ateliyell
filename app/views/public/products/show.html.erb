@@ -58,11 +58,10 @@
         <% else %>
           <%= link_to "フォローする", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :post %>
         <% end %>
-      
       </div>
       
       <div class="mt-5">
-        <div>作品説明</div>
+        <div>作品説明 :</div>
         <div><%= @product.introduction %></div>
         
         <div>

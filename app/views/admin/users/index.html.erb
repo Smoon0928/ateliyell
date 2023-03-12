@@ -19,6 +19,7 @@
               <td><%= user.id %></td>
               <td><%= link_to user.user_name,admin_user_path(user.id) %></td>
               <td><%= user.email %></td>
+              <td><%= user.followers.count %></td>
               <td><% if user.is_deleted %>
                     <div class="text-danger">退会済</div>
                   <% else %>
