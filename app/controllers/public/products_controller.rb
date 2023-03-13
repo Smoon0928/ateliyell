@@ -16,10 +16,18 @@ class Public::ProductsController < ApplicationController
     end
   end
 
+  #def update
+    #product = Product.find(params[:id])
+    #product.update(product_params)
+    #redirect_to product_path(product.id)
+  #end
   def update
-    product = Product.find(params[:id])
-    product.update(product_params)
-    redirect_to product_path(product.id)
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to product_path(@product.id)
+    else
+      render :new
+    end
   end
 
   def show

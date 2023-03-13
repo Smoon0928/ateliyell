@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :followings, through: :friends, source: :follow
   has_many :followers, through: :reverse_of_friends, source: :follower
   
+  validates :user_name, presence: true
+  
   def get_profile_image(width, height)
     unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')

@@ -2,6 +2,14 @@
  <div class='row'>
   <h4><span class="bg-light">作品新規登録<span></h4>
   </div>
+  <% if @product.errors.any? %>
+    <%= @product.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
 <div class='container'>
  <div class='row'>
@@ -15,7 +23,7 @@
        <%= f.label :"作品名" %>
        <%= f.text_field :name, class: 'form-control product_name', placeholder: "作品名" %>
       </div>
-       <div class="form-group">
+      <div class="form-group">
        <%= f.label :"作品説明" %>
        <%= f.text_area :introduction, class: 'form-control product_body', placeholder: "ここに説明文を記述します(作品のテーマ、こだわりポイント、サイズなど)" %>
       </div>

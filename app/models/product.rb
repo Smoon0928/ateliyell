@@ -7,6 +7,11 @@ class Product < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :images, presence: true
+  validates :genre, presence: true
+  
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
