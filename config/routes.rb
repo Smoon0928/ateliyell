@@ -38,19 +38,22 @@ Rails.application.routes.draw do
     resource :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
    end
-    resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]
-    resource :friends, only: [:create, :destroy]
+    resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]do
+       member do
+        get :followings, :followers
+      end
+    end
+    resources :friends, only: [:create, :destroy]do
+      member do
+        get :followings, :followers
+      end
+    end
     post 'friends/:user_id' => 'friends#create', as:'follow'
     delete 'friends/:user_id' => 'friends#destroy', as:'unfollow'
     get 'followings' => 'friends#followings', as: 'followings'
     get 'followers' => 'friends#followers', as: 'followers'
   end
   
-    resources :users do
-      member do
-        get :followings, :followers
-      end
-    end
   
  
 

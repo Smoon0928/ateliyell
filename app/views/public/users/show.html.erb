@@ -12,7 +12,7 @@
 
         <table class="col-8">
           <tr>
-        	  <th>自己紹介文</th>
+        	  <th>自己紹介文: </th>
         	  <th><%= @user.self_introduction %></th>
           </tr>
           <th>投稿数 </th>
@@ -20,14 +20,14 @@
           </tr>
           <tr>
         	  <th>フォロー</th>
-        	  <th><%= link_to user_session_path(@user.id) do %>
+        	  <th><%= link_to followings_friend_path(@user.id) do %>
         	        <%= @user.followings.count %>
         	      <% end %>
         	   </th>
           </tr> 
           <tr>
         	  <th>フォロワー</th>
-        	  <th><%= link_to user_session_path(@user.id) do %>
+        	  <th><%= link_to followers_friend_path(@user.id) do %>
         	        <%= @user.followers.count %>
         	      <% end %>
         	  </th>

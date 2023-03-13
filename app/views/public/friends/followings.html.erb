@@ -1,2 +1,7 @@
 <h1>Public::Friends#followings</h1>
 <p>Find me in app/views/public/friends/followings.html.erb</p>
+
+<p>フォロー一覧</p><br/>
+  <% @users.each do |user| %>
+  <%= user.user_name %>
+<% end %>
