@@ -1,4 +1,10 @@
 class Public::UsersController < ApplicationController
+  before_action :set_user, only: [:followings, :followers]
+  
+  def index
+  end
+  
+  
   def show
     @user = User.find(params[:id])
     # @profile_image = @user.profile_image
@@ -27,7 +33,20 @@ class Public::UsersController < ApplicationController
   def withdraw
   end
   
-   private
+  def followings
+    @users = @user.followings
+  end
+  
+  def followers
+    @users = @user.followers
+  end
+  
+
+private
+  def set_user
+    @user = User.find(params[:id])
+  end
+   
   def user_params
     params.require(:user).permit(:name, :self_introduction, :genre_id, :user_id ,:user_name , :product, :profile_image, images:[])
   end

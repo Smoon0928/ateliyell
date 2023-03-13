@@ -5,8 +5,8 @@
       <h2>User info</h2>
       <%= render 'public/users/info',user:current_user %>
       <br>
-      <h2>ジャンル一覧</h2>
-      <%= render 'public/users/info',user:current_user %>
+      <%= render 'genre', genres: @genres %>
+
     </div>
     <div class='col-md-9 row pl-5 mt-4'>
       <div class='col-md-7 ofset-md-1'>

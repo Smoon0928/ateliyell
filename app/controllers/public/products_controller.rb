@@ -1,6 +1,12 @@
 class Public::ProductsController < ApplicationController
   def index
     @products = Product.all
+    @genres = Genre.all 
+    
+    if params[:genre_id].present?
+       @genre = Genre.find(params[:genre_id])
+       @products = @genre.products
+    end
   end
 
   def new
@@ -32,8 +38,12 @@ class Public::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @products = Product.all
     @user = User.find(@product.user.id)
     @comment = Comment.new
+    @genres = Genre.all
+    
+    
     @selected_image = if params[:image_index].present?
       index = params[:image_index].to_i
       @product.images[index]

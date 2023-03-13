@@ -45,6 +45,13 @@ Rails.application.routes.draw do
     get 'followings' => 'friends#followings', as: 'followings'
     get 'followers' => 'friends#followers', as: 'followers'
   end
+  
+    resources :users do
+      member do
+        get :followings, :followers
+      end
+    end
+  
  
 
 
