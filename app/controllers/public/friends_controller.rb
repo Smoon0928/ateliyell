@@ -19,4 +19,10 @@ class Public::FriendsController < ApplicationController
     user = User.find(params[:id])
     @users = user.followers
   end
+  
+  def show
+    user = User.find(params[:id])
+    @users = user.followers
+  end 
+  
 end

@@ -2,14 +2,16 @@ class Public::UsersController < ApplicationController
   before_action :set_user, only: [:followings, :followers]
   
   def index
-    @@user = User.find(params[:id])
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
-  
   
   def show
     @user = User.find(params[:id])
     # @profile_image = @user.profile_image
     @products = @user.products.all
+    @q = User.ransack(params[:q])
+    @users = @q.result(distinct: true)
   end
 
   def edit

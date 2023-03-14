@@ -3,7 +3,7 @@
   <div class='row'>
     <div class='col-md-3 mt-4'>
       <h2>User info</h2>
-      <%= render 'public/users/info',user:current_user %>
+      <%= render 'public/users/info',user:@product.user %>
       <br>
       <%= render 'genre', genres: @genres %>
 
@@ -19,8 +19,6 @@
               <%= image_tag image, size: "100x100" %>
             <% end %>
           <% end %>
-        <% else %>
-          <%= image_tag "no_image",size: "200x200" %>
         <% end %>
       </div>
       <div class='col-md-5'>
@@ -29,6 +27,9 @@
         作品名:<%= @product.name %>
         <br>
         <br>
+        <!--<div id = "like_<%#= @product.id %>">-->
+        <!--  <%#= render partial: "public/likes/like", locals: { product: @product } %>-->
+        <!--</div>-->
         ♡エール数:<%= @product.likes.count %> 
         <br>
         ジャンル名:<%= @product.genre.name %>
@@ -65,9 +66,9 @@
         <% if signed_in? && @user != current_user%>
           <div id="follow_form">
             <% if current_user.following?(@product.user) %>
-              <%= link_to "フォロー中", follow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :delete %>
+              <%= link_to "フォロー中", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :delete %>
             <% else %>
-              <%= link_to "フォローする", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :post %>
+              <%= link_to "フォローする", follow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :post %>
             <% end %>
           </div>
         <% end %>

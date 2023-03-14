@@ -1,0 +1,14 @@
+<% if !user_signed_in? %>
+  <i class="fa fa-heart like-btn"></i>
+  <%= product.likes.length %>
+<% elsif current_user.liked_by?(product.id) %>
+  <%= link_to product_like_path(product, post.likes), class: "like-link", method: :delete, remote: true do %>
+    <i class="fa fa-heart unlike-btn"></i>
+  <% end %>
+  <%= product.likes.length %>
+<% else %>
+  <%= link_to product_likes_path(post), class: "like-link", method: :post, remote: true do %>
+    <i class="fa fa-heart like-btn"></i>
+  <% end %>
+  <%= product.likes.length %>
+<% end %>

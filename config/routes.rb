@@ -42,8 +42,11 @@ Rails.application.routes.draw do
        member do
         get :followings, :followers
       end
+      collection do
+        get 'search'
+      end
     end
-    resources :friends, only: [:create, :destroy]do
+    resources :friends, except: [:create, :destroy]do
       member do
         get :followings, :followers
       end

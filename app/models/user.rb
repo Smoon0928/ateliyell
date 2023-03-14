@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :liked_products, through: :likes, source: :post
   #フォロー、フォロワー機能のアソシエーション
   has_many :friends, class_name: "Friend", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_friends, class_name: "Friend", foreign_key: "follow_id", dependent: :destroy
@@ -31,20 +32,20 @@ class User < ApplicationRecord
   end
   # フォローを外すときの処理
   def unfollow(user_id)
+    p friends
     friends.find_by(follow_id: user_id).destroy
   end
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
   end
-end
-  
-  #仮設定のフォローフォロワー記述
-  #def followings
-    #[]
-  #end
-  
-  #def followers
-    #[1, 2]
-  #end
 
+  
+  def liked_by?(product_id)
+    likes.where(product_id: product_id).exists?
+  end
+  def self.ransackable_attributes(auth_object = nil)
+    ["user_name"]
+  end
+
+end
