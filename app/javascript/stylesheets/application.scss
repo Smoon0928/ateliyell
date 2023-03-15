@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&family=Zen+Maru+Gothic&display=swap');
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body {
+    font-family: 'Raleway', 'Zen Maru Gothic', sans-serif !important;
+}
 
 .img-fluid {
     width: 250px;
@@ -43,4 +48,48 @@
 .btn-black:hover {
     background-color: #fff;
     color: #000;
+}
+
+.search-index-card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+a, a:hover {
+    color: #A85445;
+}
+
+.search_container {
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid #343a40;
+  border-radius: 3px;
+  display: block;
+  height: 2.3em;
+  width: 256px;
+  overflow: hidden;
+}
+
+.search_container input[type="search"] {
+  border: none;
+  height: 2.0em;
+  padding: 0 10px;
+}
+
+.search_container input[type="search"]:focus {
+  outline: 0;
+}
+
+.search_container button {
+  cursor: pointer;
+  border: none;
+  background: #f0f0f0;
+  color: #000;
+  position: absolute;
+  width: 3rem;
+  height: 3.0rem;
+  right: 0;
+  top: -5px;
+  outline: none;
 }
