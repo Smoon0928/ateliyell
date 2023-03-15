@@ -1,0 +1,62 @@
+<div>
+  <div class="container mt-4">
+    <div class="border" style="padding:10px;">プロフィール</div>
+      <div class="border row" style="padding:40px; margin-left: 0; margin-right: 0;">
+        <div class="col-4">
+          <% @search_users.each do |user| %>
+            <h3><%= user.user_name %></h3>
+            <%= image_tag user.get_profile_image(150,150) %>
+          <br>
+          <br>
+        </div>
+
+        <table class="col-8">
+          <tr>
+            <th>自己紹介文: </th>
+        	<th><%= user.self_introduction %></th>
+          </tr>
+            <th>投稿数 </th>
+        	<th><%= user.products.count %></th>
+          </tr>
+          <tr>
+        	<th>フォロー</th>
+        	<th><%= link_to followings_friend_path(user.id) do %>
+        	      <%= user.followings.count %>
+        	    <% end %>
+        	</th>
+          </tr> 
+          <tr>
+            <th>フォロワー</th>
+        	<th><%= link_to followers_friend_path(user.id) do %>
+        	      <%= user.followers.count %>
+        	    <% end %>
+        	</th>
+          </tr>
+        </table>
+      </div>
+   </div>
+
+<!--<div class="container mt-5">-->
+<!--    <div class="row row-cols-1 row-cols-3">-->
+
+<!--      <#% @products.each do |product| %>-->
+        <!-- First column -->
+<!--        <div class="col">-->
+<!--          <div class="card">-->
+<!--            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">-->
+<!--              <#% if product.images.first.present? %>-->
+<!--                <#%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>-->
+<!--              <#% end %>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title"><#%= link_to product.name, product_path(product.id) %></h5>-->
+<!--              <p class="card-text"><#%= product.introduction %></p>-->
+<!--              <#%= link_to "作品を見る",product_path(product.id), class: "btn btn-primary" %>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      <#% end %>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<% end %>

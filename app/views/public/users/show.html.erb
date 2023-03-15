@@ -8,6 +8,9 @@
           <br>
           <br>
           <%= link_to "プロフィールを編集する",edit_user_path(@user.id), class: "btn btn-success" %>
+          <br>
+          <br>
+          <%= link_to "退会手続きをする",unsubscribe_user_path(@user.id), class: "btn btn-danger" %>
         </div>
 
         <table class="col-8">
@@ -29,6 +32,13 @@
         	  <th>フォロワー</th>
         	  <th><%= link_to followers_friend_path(@user.id) do %>
         	        <%= @user.followers.count %>
+        	      <% end %>
+        	  </th>
+          </tr>
+           <tr>
+        	  <th>エールを送った投稿</th>
+        	  <th><%= link_to likes_user_path(@user.id) do %>
+        	        <%= @user.likes.count %>
         	      <% end %>
         	  </th>
           </tr>

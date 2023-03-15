@@ -35,12 +35,15 @@ Rails.application.routes.draw do
   scope module: :public do
    
     resources :products,only:[:index,:new,:create,:update,:show,:edit,:destroy]do
-    resource :likes, only: [:create, :destroy]
+    resource :likes, only: [:create, :destroy, :show]
     resources :comments, only: [:create, :destroy]
    end
-    resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]do
+    resources :users,only:[:index,:show,:edit,:update,:destroy]do
+      
        member do
         get :followings, :followers
+        get "users/unsubscribe" => "users#unsubscribe", as:"unsubscribe"
+        get :likes
       end
       collection do
         get 'search'

@@ -1,2 +1,21 @@
-<h1>Public::Users#unsubscribe</h1>
-<p>Find me in app/views/public/users/unsubscribe.html.erb</p>
+
+    <div class="container px-5 px-sm-0">
+     <div class="row">
+      <div class="offset-md-4 mt-5">
+       <h2 class="text-center">※本当に退会しますか？</h2>
+        <p class="text-center">
+         退会すると、</br>
+         これまでの登録情報が閲覧できなくなります。</br>
+         退会する場合は、「退会する」をクリックしてください
+        </p>
+      </div>
+     </div>
+     
+     <div class="row">
+      <div class="offset-md-5 mt-5">
+      <%= link_to "退会しない", user_path, class: 'btn btn-primary' %>
+      <%= link_to "退会する",root_path, class: "destroy-user", method: :delete, data: { confilm: "本当に退会しますか？" }, class: 'btn btn-danger' %>
+      </div>
+     </div>
+    </div>
+    
