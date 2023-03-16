@@ -16,7 +16,7 @@
          <% @products.each do |product| %>
            <tr>
              <td><%= link_to product.name,admin_product_path(product.id) %></td>
-             <td><%= link_to product.user.user_name,admin_user_path(product.id) %></td>
+             <td><%= link_to product.user.user_name,admin_user_path(product.user.id) %></td>
              <td><%= product.genre.name %></td>
              <td><%= product.likes.count %><td>
            </tr>

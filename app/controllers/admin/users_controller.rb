@@ -6,8 +6,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:user_id])
-    @user = User.find(@product.user.id)
+    @user = User.find(params[:id])
+    
     @products = @user.products
   end
 

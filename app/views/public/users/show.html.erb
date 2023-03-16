@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
-    <!--<#% @users.each do |user| %>-->
-      <div class="col-12 col-md-12 col-lg-12 mb-3 mt-3">
-        <div class="card">
-          <%= image_tag @user.get_profile_image(150, 150) %>
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= @user.user_name %>
-            </h5>
+    <div class="card mb-3 col-md-12 mt-5" >
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= image_tag @user.get_profile_image(200, 200) %>
+        </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"> <%= @user.user_name %></h5>
             <div class="card-text">
               <% if @user.self_introduction.present? %>
                 <div class="mb-3">
@@ -32,37 +32,29 @@
                 </div>
               </div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    <!--<#% end %>-->
-</div>
-
-
-
-
-
-
-
- <div class="container mt-5">
-    <div class="row row-cols-1 row-cols-3">
-
-      <% @products.each do |product| %>
-        <div class="col">
-          <div class="card">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <% if product.images.first.present? %>
-                <%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>
-              <% end %>
+    
+     <div class="container mt-5">
+       <div class="row row-cols-1 row-cols-3">
+          <% @products.each do |product| %>
+            <div class="col">
+              <div class="card">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <% if product.images.first.present? %>
+                    <%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>
+                  <% end %>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title"><%= link_to product.name, product_path(product.id) %></h5>
+                  <p class="card-text"><%= product.introduction %></p>
+                  <%= link_to "作品を見る",product_path(product.id), class: "btn btn-primary" %>
+                </div>
+              </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title"><%= link_to product.name, product_path(product.id) %></h5>
-              <p class="card-text"><%= product.introduction %></p>
-              <%= link_to "作品を見る",product_path(product.id), class: "btn btn-primary" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
+          <% end %>
+       </div>
     </div>
   </div>
