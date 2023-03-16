@@ -47,5 +47,12 @@ class User < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["user_name"]
   end
+  
+  def self.guest
+    find_or_create_by!(user_name: 'guestuser', last_name: "guest_user", first_name: "", last_name_kana: "", first_name_kana: "", phone_number: "",  email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.user_name = "guestuser"
+    end
+  end
 
 end

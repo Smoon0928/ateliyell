@@ -10,7 +10,7 @@
           <th>ユーザーネーム</th>
           <th>メールアドレス</th>
           <th>フォロワー数</th>
-          <th>ステータス</th>
+          <th>投稿数</th>
         </tr>
        </thead>
          <tbody>
@@ -20,12 +20,8 @@
               <td><%= link_to user.user_name,admin_user_path(user.id) %></td>
               <td><%= user.email %></td>
               <td><%= user.followers.count %></td>
-              <td><% if user.is_deleted %>
-                    <div class="text-danger">退会済</div>
-                  <% else %>
-                    <div class="text-success">有効会員</div>
-                  <% end %>
-              </td>
+              <td><%=
+              user.products.count %></td>
             </tr>
            <% end %>
 　       </tbody>
