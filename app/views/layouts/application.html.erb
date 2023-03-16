@@ -23,41 +23,41 @@
             <ul class="navbar-nav ml-auto">
       <%if user_signed_in? && current_user.user_name == "guestuser" %>
         <li class="nav-item">
-          <%=link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'nav-link text-dark' %>
+          <%=link_to "Logout",destroy_user_session_path,method: :delete, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
-          <%= link_to '作品一覧', products_path, class: 'nav-link text-dark' %>
+          <%= link_to 'Product list', products_path, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
           <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
         </li>
          <li>
           <li class="nav-item">
-          <%=link_to "新規登録",new_user_registration_path, class: 'nav-link text-dark' %>
+          <%=link_to "Sign up",new_user_registration_path, class: 'nav-link text-dark' %>
         </li>
       <%elsif user_signed_in? %>
         <li class="nav-item">
-          <%=link_to "ログアウト",destroy_user_session_path,method: :delete, class: 'nav-link text-dark' %>
+          <%=link_to "Logout",destroy_user_session_path,method: :delete, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
-          <%= link_to '作品投稿', new_product_path, class: 'nav-link text-dark' %>
+          <%= link_to 'Newpost', new_product_path, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
-          <%= link_to '作品一覧', products_path, class: 'nav-link text-dark' %>
+          <%= link_to 'Product list', products_path, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
           <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
-          <%= link_to 'マイページ', user_path(current_user.id), class: 'nav-link text-dark' %>
+          <%= link_to 'My page', user_path(current_user.id), class: 'nav-link text-dark' %>
         </li>
       <% else %>
         <li>
           <li class="nav-item">
-          <%=link_to "新規登録",new_user_registration_path, class: 'nav-link text-dark' %>
+          <%=link_to "Sign up",new_user_registration_path, class: 'nav-link text-dark' %>
         </li>
         <li>
-          <%= link_to "ログイン",user_session_path, class: 'nav-link text-dark' %>
+          <%= link_to "Login",user_session_path, class: 'nav-link text-dark' %>
         </li>
         <li class="nav-item">
           <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
