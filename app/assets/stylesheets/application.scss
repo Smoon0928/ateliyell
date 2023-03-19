@@ -14,8 +14,8 @@
  *= require_self
  */
 .swiper {
-  width: 600px;
-  height: 300px;
+  width: 1200px;
+  height: 600px;
 }
 
 :root {
@@ -25,8 +25,8 @@
 .swiper-slide{
   width: 100%;
   img {
-    width: 600px;
-    height: 300px;
+    width: 1200px;
+    height: 550px;
     object-fit: cover;
   }
 }
