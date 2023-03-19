@@ -30,6 +30,16 @@
                     Follower: <%= link_to @user.followers.count, followers_friend_path(@user.id) %>
                   </small>
                 </div>
+                <div class="col-12 col-md-6">
+                  <small class="text-black-50">
+                    Likes: <%= link_to @user.likes.count, likes_user_path %>
+                  </small>
+                </div>
+                <div class="col-12 col-md-6">
+                  <small class="text-black-50">
+                    Private: <%= link_to @products.status_private.count,private_user_path(@user.id) %>
+                  </small>
+                </div>
                 <!--#ifの設定できていない-->
                 <% if signed_in? && @user = current_user %>
                   <%= link_to "プロフィールを編集する",edit_user_path(@user.id), class: "btn btn-success" %>

@@ -37,8 +37,8 @@
         <div><%= @product.introduction %></div>
         <br>
           <div class="current_user acrion">
-            <%= link_to "編集する",edit_admin_product_path(@product.id), class: "btn btn-success" %>
-            <%= link_to "削除",product_path(@product.id),method: :delete, "data-confirm"=>"本当に削除しますか？", class: "btn btn-danger" %>
+            <%= link_to "ステータスを編集する",edit_admin_product_path(@product.id), class: "btn btn-success" %>
+            
           </div>
         <%# カリキュラムのいいね機能実装　%>
       <!--  <%# if signed_in? && @user != current_user%>-->

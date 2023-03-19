@@ -45,7 +45,8 @@
           </div>
         <% end %>
         <%# カリキュラムのいいね機能実装　%>
-        <% if signed_in? && @user != current_user%>
+        
+        <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
           <div id="like_form">
             <% if @product.liked_by?(current_user) %>
               <p>
@@ -63,7 +64,7 @@
           </div>
         <% end %>
         <%# 参考資料のフォロー、フォロワー機能実装　%>
-        <% if signed_in? && @user != current_user%>
+        <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
           <div id="follow_form">
             <% if current_user.following?(@product.user) %>
               <%= link_to "フォロー中", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :delete %>

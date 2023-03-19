@@ -1,6 +1,6 @@
 <div class="container">
  <div class="row">
-  <div class="col-sm-12 col-md-11 col-lg-8  mx-auto">
+  <div class="col-sm-12 col-md-11 col-lg-9  mx-auto">
    <br>
      <h4><span class="bg-light">作品一覧<span></h4>
       <table class='table'>
@@ -10,6 +10,7 @@
           <th>投稿ユーザー</th>
           <th>ジャンル</th>
           <th>いいね数</th>
+          <th>ステータス</th>
         </tr>
        </thead>
        <tbody>
@@ -18,7 +19,8 @@
              <td><%= link_to product.name,admin_product_path(product.id) %></td>
              <td><%= link_to product.user.user_name,admin_user_path(product.user.id) %></td>
              <td><%= product.genre.name %></td>
-             <td><%= product.likes.count %><td>
+             <td><%= product.likes.count %></td>
+             <td><%= product.status %></td>
            </tr>
          <% end %>
        </tbody>

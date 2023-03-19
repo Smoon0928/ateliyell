@@ -19,6 +19,10 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
+  def unsubscribe
+    @user = User.find(params[:id])
+  end
 
   def update
     @user = User.find(params[:id])
@@ -55,6 +59,9 @@ class Public::UsersController < ApplicationController
      @user = User.find(params[:id])
     likes= Like.where(user_id: @user.id).pluck(:product_id)
     @like_products = Product.find(likes)
+  end
+  
+  def private
   end
 
 private

@@ -3,6 +3,10 @@
 // Swiperのオプションを定数化
 const opt = {
   loop: true, 
+  speed: 3000,
+  autoplay:{
+    delay: 3000,
+  },
   pagination: { 
     el: '.swiper-pagination', 
   },

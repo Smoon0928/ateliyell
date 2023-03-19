@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :genres,only:[:index,:create,:edit,:update]
     resources :products,only:[:index,:update,:show,:edit,:destroy]
-    resources :users,only:[:index,:show,:edit,:update,:unsubscribe,:withdraw]
+    resources :users,only:[:index,:show,:edit,:update,:destroy]
+    get "users/unsubscribe/:id" => "users#unsubscribe", as:"admin/unsubscribe"
   end
 
   
@@ -42,8 +43,9 @@ Rails.application.routes.draw do
       
        member do
         get :followings, :followers
-        get "users/unsubscribe" => "users#unsubscribe", as:"unsubscribe"
+        get "users/unsubscribe/:id" => "users#unsubscribe", as:"unsubscribe"
         get :likes
+        get "products/private" => "products#private",as:"private"
       end
       collection do
         get 'search'

@@ -82,6 +82,10 @@ class Public::ProductsController < ApplicationController
     redirect_to '/products'
   end
   
+  def private
+    @private_products = Product.where(status: 1)
+  end
+  
   private
   
   def set_product
