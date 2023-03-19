@@ -43,9 +43,6 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def withdraw
-  end
-  
   def followings
     @users = @user.followings
   end
@@ -61,8 +58,6 @@ class Public::UsersController < ApplicationController
     @like_products = Product.find(likes)
   end
   
-  def private
-  end
 
 private
   def set_user
