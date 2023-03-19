@@ -23,6 +23,7 @@ class Public::FriendsController < ApplicationController
   def show
     user = User.find(params[:id])
     @users = user.followers
+    @user = User.find(params[:id])
   end 
   
 end

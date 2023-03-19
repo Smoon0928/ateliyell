@@ -1,7 +1,28 @@
-<h1>Public::Friends#followings</h1>
-<p>Find me in app/views/public/friends/followings.html.erb</p>
-
-<p>フォロー一覧</p><br/>
-  <% @users.each do |user| %>
-  <%= user.user_name %>
-<% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-11 col-lg-8  mx-auto">
+   <br>
+     <h4><span class="bg-light">follow <span></h4>
+      <table class='table'>
+       <thead class="table table-light">
+        <tr>
+          <th>ユーザーネーム</th>
+          <th></th>
+          <th>フォロワー数</th>
+          <th>フォロー数</th>
+        </tr>
+       </thead>
+         <tbody>
+           <% @users.each do |user| %>
+            <tr>
+              <td><%= link_to user.user_name,admin_user_path(user.id) %></td>
+              <td><%= image_tag user.get_profile_image(70,70) %></td>
+              <td><%= user.followers.count %></td>
+              <td><%= user.followings.count %></td>
+            </tr>
+           <% end %>
+　       </tbody>
+      </table>
+    <div class="col-md-5 mx-auto"></div>
+  </div>
+</div>
