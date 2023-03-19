@@ -1,11 +1,13 @@
 class Public::ProductsController < ApplicationController
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  
   def index
-    @products = Product.all
+    @products = Product.all.status_public
     @genres = Genre.all 
     
     if params[:genre_id].present?
        @genre = Genre.find(params[:genre_id])
-       @products = @genre.products
+       @products = @genre.products.status_public
     end
   end
 
@@ -15,10 +17,20 @@ class Public::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
-      redirect_to '/products'
-    else
-      render :new
+    # if @product.save
+    #   redirect_to '/products'
+    # else
+    #   render :new
+    # end
+    
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: '新規投稿を行いました。' }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -50,7 +62,14 @@ class Public::ProductsController < ApplicationController
     else
       @product.images.first
     end
+    
+    if @product.status_private? && @product.user != current_user
+      respond_to do |format|
+        format.html { redirect_to products_path, notice: 'このページにはアクセスできません' }
+      end
+    end
   end
+  
   
 
   def edit
@@ -64,8 +83,13 @@ class Public::ProductsController < ApplicationController
   end
   
   private
+  
+  def set_product
+      @product = Product.find(params[:id])
+    end
+    
   def product_params
-    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image, images: [])
+    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image,:status, images: [])
   end
   
 end

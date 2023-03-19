@@ -16,4 +16,6 @@ class Product < ApplicationRecord
   def liked_by?(user)
     likes.exists?(user_id: user.id)
   end
+  
+  enum status: {public: 0,private:1 },_prefix: true
 end

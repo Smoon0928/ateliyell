@@ -1,0 +1,12 @@
+ ja:
+    enums:
+      product:
+        status_method:
+          public: "公開"
+          private: "非公開"
+    activerecord:
+        attributes:
+            product:
+                statuses:
+                    public: "公開"
+                    private: "非公開"
