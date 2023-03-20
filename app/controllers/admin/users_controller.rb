@@ -2,9 +2,9 @@ class Admin::UsersController < ApplicationController
    before_action :authenticate_admin!
   # before_action :ensure_guest_user, only: [:edit]
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
-
+  
   def show
     @user = User.find(params[:id])
     @products = @user.products

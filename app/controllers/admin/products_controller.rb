@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.page(params[:page])
   end
   
   def show
@@ -15,6 +15,7 @@ class Admin::ProductsController < ApplicationController
     else
       @product.images.first
     end
+  end
   
   def edit
     @product = Product.find(params[:id])
@@ -28,5 +29,4 @@ class Admin::ProductsController < ApplicationController
   def admin_product_params
     params.require(:product).permit(:name, :introduction, :image, :genre_id, :genre_name, :user_name)
   end
-
 end

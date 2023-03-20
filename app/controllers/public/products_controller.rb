@@ -2,7 +2,7 @@ class Public::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
-    @products = Product.all.status_public
+    @products = Product.status_public.page(params[:page])
     @genres = Genre.all 
     
     if params[:genre_id].present?
