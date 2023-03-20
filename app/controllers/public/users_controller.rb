@@ -11,9 +11,9 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # @profile_image = @user.profile_image
-    @products = @user.products.all
-    @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true)
+    @products = @user.products.where(status: 0)
+    # @q = User.ransack(params[:q])
+    # @users = @q.result(distinct: true)
   end
 
   def edit
