@@ -46,21 +46,26 @@
         <% end %>
         <%# カリキュラムのいいね機能実装　%>
         
+        <!--<#% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>-->
+        <!--  <div id="like_form">-->
+        <!--    <#% if @product.liked_by?(current_user) %>-->
+        <!--      <p>-->
+        <!--        <#%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :delete, remote: true do %>-->
+        <!--          ♥<#%= @product.likes.count %> いいね済み-->
+        <!--        <#% end %>-->
+        <!--      </p>-->
+        <!--    <#% else %>-->
+        <!--      <p>-->
+        <!--        <#%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :post, remote: true do %>-->
+        <!--          ♡<#%= @product.likes.count %> いいねする-->
+        <!--        <#% end %>-->
+        <!--      </p>-->
+        <!--    <#% end %>-->
+        <!--  </div>-->
+        <!--<#% end %>-->
         <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
-          <div id="like_form">
-            <% if @product.liked_by?(current_user) %>
-              <p>
-                <%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :delete do %>
-                  ♥<%= @product.likes.count %> いいね済み
-                <% end %>
-              </p>
-            <% else %>
-              <p>
-                <%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :post do %>
-                  ♡<%= @product.likes.count %> いいねする
-                <% end %>
-              </p>
-            <% end %>
+          <div id="like_buttons_<%= @product.id %>">
+            <%= render "public/likes/likes",product: @product %>
           </div>
         <% end %>
         <%# 参考資料のフォロー、フォロワー機能実装　%>

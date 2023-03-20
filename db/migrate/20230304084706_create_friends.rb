@@ -5,6 +5,7 @@ class CreateFriends < ActiveRecord::Migration[6.1]
       t.timestamps
       t.integer :follow_id,null: false,index: false
       t.integer :follower_id,null: false,index: false
+       t.index [:follower_id, :follow_id], unique: true
     end
   end
 end

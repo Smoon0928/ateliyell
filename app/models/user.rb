@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :followings, through: :friends, source: :follow
   has_many :followers, through: :reverse_of_friends, source: :follower
   
-  validates :user_name, presence: true
+  #validates :user_name, length: { minimum: 2, maximum: 10 } presence: true
   
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -39,7 +39,6 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-
   
   def liked_by?(product_id)
     likes.where(product_id: product_id).exists?

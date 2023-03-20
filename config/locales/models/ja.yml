@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      #user: ユーザー
+      product: 作品
+      #sub_categorie: サブカテゴリー 
+    attributes:
+      product:
+        name: 作品名
+        genre: ジャンル
+       # mailaddress: メールアドレス
+        #password: パスワード
+      #main_category: 
+        #category_name: メインカテゴリー名
+      #sub_category:
+        #category_name: サブカテゴリー名
+        #genre: ジャンル

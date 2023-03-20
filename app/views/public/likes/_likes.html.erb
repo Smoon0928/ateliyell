@@ -1,14 +1,32 @@
-<% if !user_signed_in? %>
-  <i class="fa fa-heart like-btn"></i>
-  <%= product.likes.length %>
-<% elsif current_user.liked_by?(product.id) %>
-  <%= link_to product_like_path(product, post.likes), class: "like-link", method: :delete, remote: true do %>
-    <i class="fa fa-heart unlike-btn"></i>
-  <% end %>
-  <%= product.likes.length %>
-<% else %>
-  <%= link_to product_likes_path(post), class: "like-link", method: :post, remote: true do %>
-    <i class="fa fa-heart like-btn"></i>
-  <% end %>
-  <%= product.likes.length %>
-<% end %>
+<!--<#% if !user_signed_in? %>-->
+<!--  <i class="fa fa-heart like-btn"></i>-->
+<!--  <#%= product.likes.length %>-->
+<!--<#% elsif current_user.liked_by?(product.id) %>-->
+<!--  <#%= link_to product_like_path(product, post.likes), class: "like-link", method: :delete, remote: true do %>-->
+<!--    <i class="fa fa-heart unlike-btn"></i>-->
+<!--  <#% end %>-->
+<!--  <#%= product.likes.length %>-->
+<!--<#% else %>-->
+<!--  <#%= link_to product_likes_path(post), class: "like-link", method: :post, remote: true do %>-->
+<!--    <i class="fa fa-heart like-btn"></i>-->
+<!--  <#% end %>-->
+<!--  <#%= product.likes.length %>-->
+<!--<#% end %>-->
+
+<!--<#% if signed_in? && user != current_user && current_user.user_name != 'guestuser' %>-->
+          <div id="like_form">
+            <% if product.liked_by?(current_user) %>
+              <p>
+                <%= link_to product_likes_path(product), class: "btn btn-outline-danger", method: :delete, remote: true do %>
+                  ♥<%= product.likes.count %> いいね済み
+                <% end %>
+              </p>
+            <% else %>
+              <p>
+                <%= link_to product_likes_path(product), class: "btn btn-outline-danger", method: :post, remote: true do %>
+                  ♡<%= product.likes.count %> いいねする
+                <% end %>
+              </p>
+            <% end %>
+          </div>
+      

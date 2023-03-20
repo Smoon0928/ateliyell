@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <% @search_users.each do |user| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-3 mt">
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mt-5">
         <div class="card">
           <%= image_tag user.get_profile_image(300, 300), class: 'search-index-card-img' %>
           <div class="card-body">
             <h5 class="card-title">
-              <%= user.user_name %>
+              <%= link_to user.user_name,user_path(user.id) %>
             </h5>
             <div class="card-text">
               <% if user.self_introduction.present? %>
