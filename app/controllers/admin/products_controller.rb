@@ -15,8 +15,6 @@ class Admin::ProductsController < ApplicationController
     else
       @product.images.first
     end
-    
-  end
   
   def edit
     @product = Product.find(params[:id])

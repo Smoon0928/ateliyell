@@ -1,0 +1,10 @@
+<div id="follow_form">
+    <% if current_user.following?(product.user) %>
+      <%= link_to "フォロー中", unfollow_path(user_id:product.user_id), class: "btn btn-outline-primary", method: :delete, remote: true do %>
+      <% end %>
+    <% else %>
+      <%= link_to "フォローする", follow_path(user_id:product.user_id), class: "btn btn-outline-primary", method: :post, remote: true do %>
+    <% end %>
+    <% end %>
+</div>
+

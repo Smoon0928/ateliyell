@@ -83,7 +83,8 @@ class Public::ProductsController < ApplicationController
   end
   
   def private
-    @private_products = Product.where(status: 1)
+    @user = User.find(current_user.id)
+    @private_products = @user.products.where(status: 1)
   end
   
   private

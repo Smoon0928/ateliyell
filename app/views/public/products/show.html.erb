@@ -70,13 +70,15 @@
         <% end %>
         <%# 参考資料のフォロー、フォロワー機能実装　%>
         <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
-          <div id="follow_form">
-            <% if current_user.following?(@product.user) %>
-              <%= link_to "フォロー中", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :delete %>
-            <% else %>
-              <%= link_to "フォローする", follow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :post %>
-            <% end %>
-          </div>
+          <div id="friend_buttons<%= @product.id %>">
+          <%= render "public/friends/friends",product: @product %>
+          <!--<div id="follow_form">-->
+          <!--  <#% if current_user.following?(@product.user) %>-->
+          <!--    <#%= link_to "フォロー中", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :delete, remote: true do %>-->
+          <!--  <#% else %>-->
+          <!--    <#%= link_to "フォローする", follow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :post, remote: true do %>-->
+          <!--  <#% end %>-->
+          <!--</div>-->
         <% end %>
       </div>
         
