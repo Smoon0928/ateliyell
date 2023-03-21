@@ -40,7 +40,6 @@
                     Private: <%= link_to @products.status_private.count, private_user_path(@user.id) %>
                   </small>
                 </div>
-                <!--#ifの設定できていない-->
                 <% if signed_in? && @user == current_user %>
                   <%= link_to "プロフィールを編集する",edit_user_path(@user.id), class: "btn btn-success" %>
                   <%= link_to "退会手続きをする",unsubscribe_user_path(@user.id), class: "btn btn-danger" %>
@@ -52,24 +51,9 @@
         </div>
       </div>
     
-     <div class="container mt-5">
+     <div class="container mb-4">
        <div class="row row-cols-1 row-cols-3">
-          <% @products.each do |product| %>
-            <div class="col">
-              <div class="card">
-                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                  <% if product.images.first.present? %>
-                    <%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>
-                  <% end %>
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title"><%= link_to product.name, product_path(product.id) %></h5>
-                  <p class="card-text"><%= product.introduction %></p>
-                  <%= link_to "作品を見る",product_path(product.id), class: "btn bgleft" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render 'public/products/card', products: @products %>
        </div>
     </div>
   </div>

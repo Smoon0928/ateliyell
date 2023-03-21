@@ -9,6 +9,16 @@ class Public::ProductsController < ApplicationController
        @genre = Genre.find(params[:genre_id])
        @products = @genre.products.status_public.page(params[:page])
     end
+    
+    if params[:latest]
+      @products = Product.status_public.latest.page(params[:page])
+    elsif params[:old]
+      @products = Product.status_public.old.page(params[:page])
+    elsif params[:like_count]
+      @products = Product.status_public.like_count.page(params[:page])
+    else
+      @products = Product.status_public.page(params[:page])
+    end
   end
 
   def new

@@ -8,6 +8,8 @@ ja:
       product:
         name: 作品名
         genre: ジャンル
+        introduction: 作品紹介
+        images: 写真
        # mailaddress: メールアドレス
         #password: パスワード
       #main_category: 

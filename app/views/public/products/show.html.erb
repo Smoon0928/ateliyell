@@ -52,11 +52,14 @@
         <br>
         <p>コメント件数：<%= @product.comments.count %></p>
         <br>
+        
         <div>
-          <%= form_with model: [@product, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-            <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-            <i class="far fa-comments"></i> コメントする
+          <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
+            <%= form_with model: [@product, @comment] do |f| %>
+              <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+              <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+              <i class="far fa-comments"></i> コメントする
+              <% end %>
             <% end %>
           <% end %>
         </div>

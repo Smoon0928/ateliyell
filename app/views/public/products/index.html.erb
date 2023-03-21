@@ -1,30 +1,18 @@
 
   <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-3 mt-4'>
+    <div class='col-md-3 mt-5'>
        <%= render 'genre', genres: @genres %>
     </div>
 
-   <div class='col-md-9 pl-5 mt-4'>
+   <div class='col-md-9 pl-5 mt-3'>
+     <p>
+       <%= link_to '新しい順', products_path(latest: "true") %>
+       |<%= link_to '古い順', products_path(old: "true") %>
+       |<%= link_to 'エールの多い順', products_path(like_count: "true") %>
+     </p>
    <div class="row row-cols-1 row-cols-3">
-
-
-      <% @products.each do |product| %>
-        <div class="col mt-4">
-          <div class="card">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <% if product.images.first.present? %>
-                <%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"><%=link_to product.name.truncate(10), product_path(product.id) %></h5>
-              <p class="card-text"><%=product.introduction.truncate(10) %></p>
-              <%= link_to "作品の詳細を見る",product_path(product.id), class: "btn bgleft" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+     <%= render 'public/products/card', products: @products %>
       <%= paginate @products %>
     </div>
   </div>
