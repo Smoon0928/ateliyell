@@ -1,7 +1,12 @@
 
 <div class='container px-5 px-sm-0'>
+  <div>
+    <%= flash[:notice] %>
+  </div>
   <div class='row'>
+     
     <div class='col-md-3 mt-4'>
+     
       <h2>User info</h2>
       <%= render 'public/users/info',user:@product.user %>
       <br>
@@ -11,11 +16,21 @@
     <div class='col-md-9 row pl-5 mt-4'>
       <div class='col-md-7 ofset-md-1'>
         <% if @product.images.attached? %>
-          <div>
-            <%= image_tag @selected_image, size: "400x400" %>
+          <div id="product_images_<%= @product.id %>">
+            <%= render "public/products/products", product: @product %>
           </div>
+          <!--<% if @product.images.attached? %>-->
+          <!--  <div>-->
+          <!--    <%= image_tag @selected_image, size: "400x400" %>-->
+          <!--  </div>-->
+          <!--  <% @product.images.each_with_index do |image, i| %>-->
+          <!--    <%= link_to product_path(@product, image_index: i),remote: true do %>-->
+          <!--      <%= image_tag image, size: "100x100" %>-->
+          <!--    <% end %>-->
+          <!--  <% end %>-->
+          <!--<% end %>-->
           <% @product.images.each_with_index do |image, i| %>
-            <%= link_to product_path(@product, image_index: i) do %>
+            <%= link_to product_path(@product, image_index: i),remote: true do %>
               <%= image_tag image, size: "100x100" %>
             <% end %>
           <% end %>
@@ -27,9 +42,6 @@
         作品名:<%= @product.name %>
         <br>
         <br>
-        <!--<div id = "like_<%#= @product.id %>">-->
-        <!--  <%#= render partial: "public/likes/like", locals: { product: @product } %>-->
-        <!--</div>-->
         ♡エール数:<%= @product.likes.count %> 
         <br>
         ジャンル名:<%= @product.genre.name %>
@@ -38,54 +50,39 @@
         <div>作品説明 :</div>
         <div><%= @product.introduction %></div>
         <br>
+        <p>コメント件数：<%= @product.comments.count %></p>
+        <br>
+        <div>
+          <%= form_with model: [@product, @comment] do |f| %>
+            <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+            <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+            <i class="far fa-comments"></i> コメントする
+            <% end %>
+          <% end %>
+        </div>
+        <br>
+        <br>
         <% if user_signed_in? && current_user.id == @product.user_id %>
           <div class="current_user acrion">
             <%= link_to "編集する",edit_product_path(@product.id), class: "btn btn-success" %>
             <%= link_to "削除",product_path(@product.id),method: :delete, "data-confirm"=>"本当に削除しますか？", class: "btn btn-danger" %>
           </div>
         <% end %>
-        <%# カリキュラムのいいね機能実装　%>
-        
-        <!--<#% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>-->
-        <!--  <div id="like_form">-->
-        <!--    <#% if @product.liked_by?(current_user) %>-->
-        <!--      <p>-->
-        <!--        <#%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :delete, remote: true do %>-->
-        <!--          ♥<#%= @product.likes.count %> いいね済み-->
-        <!--        <#% end %>-->
-        <!--      </p>-->
-        <!--    <#% else %>-->
-        <!--      <p>-->
-        <!--        <#%= link_to product_likes_path(@product), class: "btn btn-outline-danger", method: :post, remote: true do %>-->
-        <!--          ♡<#%= @product.likes.count %> いいねする-->
-        <!--        <#% end %>-->
-        <!--      </p>-->
-        <!--    <#% end %>-->
-        <!--  </div>-->
-        <!--<#% end %>-->
+    
         <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
           <div id="like_buttons_<%= @product.id %>">
             <%= render "public/likes/likes",product: @product %>
           </div>
         <% end %>
-        <%# 参考資料のフォロー、フォロワー機能実装　%>
+        
         <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
-          <div id="friend_buttons<%= @product.id %>">
-          <%= render "public/friends/friends",product: @product %>
-          <!--<div id="follow_form">-->
-          <!--  <#% if current_user.following?(@product.user) %>-->
-          <!--    <#%= link_to "フォロー中", unfollow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :delete, remote: true do %>-->
-          <!--  <#% else %>-->
-          <!--    <#%= link_to "フォローする", follow_path(user_id:@product.user_id), class: "btn btn-outline-primary", method: :post, remote: true do %>-->
-          <!--  <#% end %>-->
-          <!--</div>-->
+          <div id="friend_buttons_<%= @user.id %>">
+          <%= render "public/friends/friends",user: @user %>
         <% end %>
       </div>
-        
       
-      <div class="mt-5">
-        <div>
-          <p>コメント件数：<%= @product.comments.count %></p>
+      <div class="comment-wrapper mb-10">
+        <p class="mt-5">コメント一覧</p>
           <% @product.comments.each do |comment| %>
             <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
             <%= comment.user.user_name %>
@@ -95,15 +92,7 @@
             <% end %>
           <% end %>
         </div>
-        <div>
-          <%= form_with model: [@product, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        </div>
       </div>
-      
-      
     </div>
   </div>
 </div>

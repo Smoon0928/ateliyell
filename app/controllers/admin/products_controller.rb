@@ -9,7 +9,7 @@ class Admin::ProductsController < ApplicationController
     @user = User.find(@product.user.id)
     @comment = Comment.new
     
-     @selected_image = if params[:image_index].present?
+    @selected_image = if params[:image_index].present?
       index = params[:image_index].to_i
       @product.images[index]
     else
@@ -22,6 +22,13 @@ class Admin::ProductsController < ApplicationController
   end
   
   def update
+    @product = Product.find(params[:id])
+    if @product.update(admin_product_params)
+      flash[:success] = "商品情報を更新しました"
+      redirect_to admin_product_path(@product)
+    else
+      render 'edit'
+    end
   end
   
    private

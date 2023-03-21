@@ -7,7 +7,7 @@ class Public::ProductsController < ApplicationController
     
     if params[:genre_id].present?
        @genre = Genre.find(params[:genre_id])
-       @products = @genre.products.status_public
+       @products = @genre.products.status_public.page(params[:page])
     end
   end
 
@@ -34,11 +34,6 @@ class Public::ProductsController < ApplicationController
     end
   end
 
-  #def update
-    #product = Product.find(params[:id])
-    #product.update(product_params)
-    #redirect_to product_path(product.id)
-  #end
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
@@ -55,7 +50,6 @@ class Public::ProductsController < ApplicationController
     @comment = Comment.new
     @genres = Genre.all
     
-    
     @selected_image = if params[:image_index].present?
       index = params[:image_index].to_i
       @product.images[index]
@@ -70,8 +64,6 @@ class Public::ProductsController < ApplicationController
     end
   end
   
-  
-
   def edit
     @product = Product.find(params[:id])
   end

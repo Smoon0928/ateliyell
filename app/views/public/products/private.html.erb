@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
               <h5 class="card-title"><%=link_to product.name, product_path(product.id) %></h5>
-              <p class="card-text"><%=product.introduction %></p>
+              <p class="card-text"><%=product.introduction.truncate(10) %></p>
               <%= link_to "作品の詳細を見る",product_path(product.id), class: "btn btn-success" %>
             </div>
           </div>

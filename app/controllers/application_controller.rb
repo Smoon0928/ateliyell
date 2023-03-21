@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller? 
   before_action :set_search
-  
+  add_flash_types :success, :info, :warning, :danger
 
   def after_sign_in_path_for(resource)
     products_path
