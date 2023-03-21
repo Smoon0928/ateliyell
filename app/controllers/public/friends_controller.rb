@@ -10,9 +10,8 @@ class Public::FriendsController < ApplicationController
   end
   
   def followings
-    @user = User.find(params[:id])
-    @users = @user.followings
-    
+    user = User.find(params[:id])
+    @users = user.followings
   end
 
   def followers

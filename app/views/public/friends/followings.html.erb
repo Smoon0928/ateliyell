@@ -13,13 +13,19 @@
         </tr>
        </thead>
          <tbody>
-           <% @users.each do |user| %>
-            <tr>
-              <td><%= link_to user.user_name,admin_user_path(user.id) %></td>
-              <td><%= image_tag user.get_profile_image(70,70) %></td>
-              <td><%= user.followers.count %></td>
-              <td><%= user.followings.count %></td>
-            </tr>
+           <% if @users.present? %>
+             <% @users.each do |user| %>
+              <tr>
+                <td><%= link_to user.user_name,admin_user_path(user.id) %></td>
+                <td><%= image_tag user.get_profile_image(70,70) %></td>
+                <td><%= user.followers.count %></td>
+                <td><%= user.followings.count %></td>
+              </tr>
+             <% end %>
+           <% else %>
+             <tr>
+              <td style="text-align:center;">フォローしているユーザーはいません</td>
+             </tr>
            <% end %>
 　       </tbody>
       </table>
