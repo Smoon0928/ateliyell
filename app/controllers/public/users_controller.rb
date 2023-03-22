@@ -54,8 +54,9 @@ class Public::UsersController < ApplicationController
   def likes
      @genres = Genre.all
      @user = User.find(params[:id])
-    likes= Like.where(user_id: @user.id).pluck(:product_id)
-    @like_products = Product.find(likes)
+    product_ids= Like.where(user_id: @user.id).pluck(:product_id)
+    @like_products = Product.where(id: product_ids).page(params[:page]).per(8)
+    #@like_array = Kaminari.paginate_array(@like_products).page(params[:page]).per(10)
   end
   
 

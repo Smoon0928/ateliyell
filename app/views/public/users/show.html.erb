@@ -20,25 +20,27 @@
                 <%= @user.products.count %>
               </div>
               <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-3">
                   <small class="text-black-50">
                     Follow: <%= link_to @user.followings.count, followings_friend_path(@user.id) %>
             	    </small>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-3">
                   <small class="text-black-50">
                     Follower: <%= link_to @user.followers.count, followers_friend_path(@user.id) %>
                   </small>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-3">
                   <small class="text-black-50">
                     Likes: <%= link_to @user.likes.count, likes_user_path %>
                   </small>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-3">
+                  <% if signed_in? && @user == current_user %>
                   <small class="text-black-50">
                     Private: <%= link_to @products.status_private.count, private_user_path(@user.id) %>
                   </small>
+                  <% end %>
                 </div>
                 <% if signed_in? && @user == current_user %>
                   <%= link_to "プロフィールを編集する",edit_user_path(@user.id), class: "btn btn-success" %>

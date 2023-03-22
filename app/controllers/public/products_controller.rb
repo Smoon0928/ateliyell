@@ -8,16 +8,14 @@ class Public::ProductsController < ApplicationController
     if params[:genre_id].present?
        @genre = Genre.find(params[:genre_id])
        @products = @genre.products.status_public.page(params[:page])
-    end
-    
-    if params[:latest]
-      @products = Product.status_public.latest.page(params[:page])
-    elsif params[:old]
-      @products = Product.status_public.old.page(params[:page])
-    elsif params[:like_count]
-      @products = Product.status_public.like_count.page(params[:page])
+    elsif params[:latest].present?
+       @products = Product.status_public.latest.page(params[:page])
+    elsif params[:old].present?
+       @products = Product.status_public.old.page(params[:page])
+    elsif params[:like_count].present?
+       @products = Product.status_public.like_count.page(params[:page])
     else
-      @products = Product.status_public.page(params[:page])
+       @products = Product.status_public.page(params[:page])
     end
   end
 
