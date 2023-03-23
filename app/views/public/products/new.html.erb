@@ -16,10 +16,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <%=form_with model:@product,url:'/products',method: :post,local:true do |f| %>
-        <div class="form-group">
-          <%= f.label :"投稿画像" %>
-          <%= f.file_field :images, multiple: true, accept: "image/*" %>
-        </div>
+        <%= render "form", item: @product, f: f %>
         <div class="form-group">
           <%= f.label :"作品名" %>
           <%= f.text_field :name, class: 'form-control product_name', placeholder: "作品名" %>

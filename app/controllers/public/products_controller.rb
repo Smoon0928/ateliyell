@@ -50,6 +50,13 @@ class Public::ProductsController < ApplicationController
       render :new
     end
   end
+  
+  def upload_image
+      @image_blob = create_blob(params[:image])
+      respond_to do |format|
+        format.json { @image_blob.id }
+      end
+  end
 
   def show
     @product = Product.find(params[:id])
@@ -91,10 +98,21 @@ class Public::ProductsController < ApplicationController
   
   def set_product
       @product = Product.find(params[:id])
-    end
+  end
     
   def product_params
-    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image,:status, images: [])
+    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image,:status).merge(images: uploaded_images)
+  end
+  
+  def uploaded_images
+    params[:product][:images].map{|id| ActiveStorage::Blob.find(id)} if params[:product][:images]
+  end
+
+  def create_blob(uploading_file)
+    ActiveStorage::Blob.create_after_upload! \
+      io: uploading_file.open,
+      filename: uploading_file.original_filename,
+      content_type: uploading_file.content_type
   end
   
 end

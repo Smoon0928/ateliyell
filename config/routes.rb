@@ -36,9 +36,10 @@ Rails.application.routes.draw do
   scope module: :public do
    
     resources :products,only:[:index,:new,:create,:update,:show,:edit,:destroy]do
-    resource :likes, only: [:create, :destroy, :show]
-    resources :comments, only: [:create, :destroy]
-   end
+      resource :likes, only: [:create, :destroy, :show]
+      resources :comments, only: [:create, :destroy]
+    end
+    post 'products/upload_image' => 'products#upload_image'
     resources :users,only:[:index,:show,:edit,:update,:destroy]do
       
        member do
