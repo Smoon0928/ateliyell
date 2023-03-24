@@ -1,6 +1,8 @@
 <div class='container'>
   <div class='row'>
-    <h4><span class="bg-light">作品新規登録<span></h4>
+    <div class='col-sm-12 col-md-8 col-lg-5 px-5 mt-3 mb-3 px-sm-0 mx-auto'>
+      <h4><span class="bg-light">作品新規登録<span></h4>
+    </div>
   </div>
   <% if @product.errors.any? %>
     <%= @product.errors.count %>件のエラーが発生しました
@@ -14,7 +16,7 @@
 
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class='col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto'>
       <%=form_with model:@product,url:'/products',method: :post,local:true do |f| %>
         <%= render "form", item: @product, f: f %>
         <div class="form-group">
