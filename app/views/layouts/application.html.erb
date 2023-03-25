@@ -15,6 +15,9 @@
   <body class="d-flex flex-column vh-100">
     <%= render 'layouts/header', product: @product %>
       <main>
+        <div>
+          <%= flash[:notice] %>
+        </div>
         <%= yield %>
       </main>
     <%= render 'layouts/footer', product: @product %>

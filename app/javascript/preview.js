@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function() {
 
   var previewImage = function(imageFile, image_id){
     var reader = new FileReader();
-    var img = new Image();
+    var img = new Image(150,150);
     var def =$.Deferred();
     reader.onload = function(e){
       var image_box = $('<div>',{class: 'image-box'});

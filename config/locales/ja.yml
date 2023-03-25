@@ -2,6 +2,11 @@
     errors:
       messages:
         not_saved: "保存できませんでした"
+    devise:
+      sessions:
+        user:
+          signed_in: "ログインに成功しました"
+          signed_out: "ログアウトに成功しました"    
     enums:
       product:
         status_method:

@@ -4,6 +4,9 @@ ja:
       user:
         first_name: "名前"
         last_name: "姓"
-        first_name_name: "名前(カナ)"
-        last_name_name: "姓(カナ)"
+        first_name_kana: "名前(カナ)"
+        last_name_kana: "姓(カナ)"
         phone_number: "電話番号"
+        user_name: "ユーザーネーム"
+        password: "パスワード"
+        email: "メールアドレス"

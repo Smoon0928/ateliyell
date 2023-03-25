@@ -9,7 +9,9 @@
       <div class="card-body">
         <h5 class="card-title"><%=link_to product.name.truncate(10), product_path(product.id) %></h5>
         <p class="card-text"><%=product.introduction.truncate(10) %></p>
-        <%= link_to "作品の詳細を見る",product_path(product.id), class: "btn bgleft" %>
+        <%= link_to product_path(product.id), class: "btn bgleft" do %>
+          <span>作品の詳細を見る</span>
+        <% end %>
         <td>
           <i class="fas fa-heart"style="color: red;"></i><%= product.likes.count %>
           <i class="far fa-comment"></i><%= product.comments.count %>

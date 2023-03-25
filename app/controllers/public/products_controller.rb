@@ -63,9 +63,10 @@ class Public::ProductsController < ApplicationController
   end
 
   
+  
   def update
     @product = Product.find(params[:id])
-    if @product.update(product_params)
+    if @product.update(update_product_params)
       redirect_to product_path(@product.id)
     else
       render :edit
@@ -106,6 +107,7 @@ class Public::ProductsController < ApplicationController
   
   def destroy
     product = Product.find(params[:id])
+    
     product.destroy
     redirect_to '/products'
   end
@@ -123,6 +125,10 @@ class Public::ProductsController < ApplicationController
     
   def product_params
     params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image,:status).merge(images: uploaded_images)
+  end
+  
+   def update_product_params
+    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image,:status, images: [])
   end
   
   def uploaded_images
