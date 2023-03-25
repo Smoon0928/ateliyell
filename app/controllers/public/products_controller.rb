@@ -1,21 +1,41 @@
 class Public::ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:top]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
   def index
     @products = Product.status_public.page(params[:page])
     @genres = Genre.all 
     
-    if params[:genre_id].present?
-       @genre = Genre.find(params[:genre_id])
-       @products = @genre.products.status_public.page(params[:page])
-    elsif params[:latest].present?
-       @products = Product.status_public.latest.page(params[:page])
-    elsif params[:old].present?
-       @products = Product.status_public.old.page(params[:page])
-    elsif params[:like_count].present?
-       @products = Product.status_public.like_count.page(params[:page])
+    if params[:genre_id].present? && params[:sort_type].present?
+      @genre = Genre.find(params[:genre_id])
+      if params[:sort_type] == "latest"
+        @products = @genre.products.status_public.latest.page(params[:page])
+      elsif params[:sort_type] == "old"  
+        @products = @genre.products.status_public.old.page(params[:page])
+      elsif params[:sort_type] == "like_count" 
+        @products = []
+        @products_array = Product.find(Like.group(:product_id).order('count(product_id) desc').pluck(:product_id))
+        @products_array.each do |product|
+          if product.genre_id == @genre.id
+            @products << product
+          end
+        end
+        @products = Kaminari.paginate_array(@products).page(params[:page])
+      end
     else
-       @products = Product.status_public.page(params[:page])
+      if params[:genre_id].present?
+         @genre = Genre.find(params[:genre_id])
+         @products = @genre.products.status_public.page(params[:page])
+      elsif params[:sort_type] == "latest"
+         @products = Product.status_public.latest.page(params[:page])
+      elsif params[:sort_type] == "old"
+         @products = Product.status_public.old.page(params[:page])
+      elsif params[:sort_type] == "like_count"
+      #   @products = Product.status_public.like_count.page(params[:page])
+         @products = Kaminari.paginate_array(Product.find(Like.group(:product_id).order('count(product_id) desc').pluck(:product_id))).page(params[:page])
+      else
+         @products = Product.status_public.page(params[:page])
+      end
     end
   end
 
@@ -42,14 +62,7 @@ class Public::ProductsController < ApplicationController
     end
   end
 
-  # def update
-  #   @product = Product.find(params[:id])
-  #   if @product.update(product_params)
-  #     redirect_to product_path(@product.id)
-  #   else
-  #     render :new
-  #   end
-  # end
+  
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
@@ -109,7 +122,7 @@ class Public::ProductsController < ApplicationController
   end
     
   def product_params
-    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image,:status, images: []).merge(images: uploaded_images)
+    params.require(:product).permit(:name, :introduction, :genre_id, :user_id, :profile_image,:status).merge(images: uploaded_images)
   end
   
   def uploaded_images

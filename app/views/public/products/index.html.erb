@@ -1,21 +1,33 @@
-
-  <div class='container px-5 px-sm-0'>
+<div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3 mt-5'>
-       <%= render 'genre', genres: @genres %>
+     <%= render 'genre', genres: @genres %>
     </div>
 
-   <div class='col-md-9 pl-5 mt-3'>
+    <div class='col-md-9 pl-5 mt-3'>
      <p>
-       <%= link_to '新しい順', products_path(latest: "true") %>
-       |<%= link_to '古い順', products_path(old: "true") %>
-       |<%= link_to 'エールの多い順', products_path(like_count: "true") %>
+       <% if params[:genre_id].present? %>
+         <%= link_to '新しい順', products_path(sort_type: "latest", genre_id: params[:genre_id]) %>
+         |<%= link_to '古い順', products_path(sort_type: "old", genre_id: params[:genre_id]) %>
+         |<%= link_to 'エールの多い順', products_path(sort_type: "like_count", genre_id: params[:genre_id]) %>
+       <% else %>
+         <%= link_to '新しい順', products_path(sort_type: "latest") %>
+         |<%= link_to '古い順', products_path(sort_type: "old") %>
+         |<%= link_to 'エールの多い順', products_path(sort_type: "like_count") %>
+       <% end %>
      </p>
-   <div class="row row-cols-1 row-cols-3">
-     <%= render 'public/products/card', products: @products %>
-      <%= paginate @products %>
+        <div class="row row-cols-1 row-cols-3">
+         <%= render 'public/products/card', products: @products %>
+        </div>
     </div>
   </div>
-  </div>
-  </div>
+</div>
 
+<div class="row p-3">
+   <div class="col-md-6 offset-md-3 py-2">
+     <div class="text-center">
+       <%= paginate @products %>
+     </div>
+   </div>
+ </div>
+</div>

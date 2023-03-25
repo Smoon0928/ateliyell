@@ -1,19 +1,14 @@
 class Public::UsersController < ApplicationController
   before_action :set_user, only: [:followings, :followers]
+  #before_action :authenticate_user!, except: [:top]
   
   def index
     @users = User.all
-    # @q = User.ransack(params[:q])
-    # @sarch_users = @q.result(distinct: true)
-    # @products = @sarch_users.products.all
   end
-  
+    
   def show
     @user = User.find(params[:id])
-    # @profile_image = @user.profile_image
     @products = @user.products.where(status: 0)
-    # @q = User.ransack(params[:q])
-    # @users = @q.result(distinct: true)
   end
 
   def edit

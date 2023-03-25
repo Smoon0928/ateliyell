@@ -4,7 +4,7 @@
   <div class="ml-5">
    <div class="ml-5">
   <%= form_with model: @user,  url: user_registration_path do |f| %>
-    <!--<#%= render "devise/shared/error_messages", resource: resource %>-->
+    <%= render "devise/shared/error_messages", resource: resource %>
       <div class="row mt-3">
         <label class="col-lg-3">名前</label>
         <div class="col-lg-3">
@@ -69,7 +69,7 @@
 
       <div class="row actions ml-5">
         <div class="col-md-8 offset-md-3">
-          <%= f.submit "新規登録", class: "btn btn-success col-lg-2 mb-3" %>
+          <%= f.submit "新規登録", class: "btn btn-success mb-3" %>
         </div>
       </div>
     <% end %>
@@ -82,91 +82,3 @@
     </div>
 </div>
 
-<!--<div class="container px-5 px-sm-0">-->
-<!-- <div class="row">-->
-<!--  <div class="col-md-8 offset-md-1 mt-5">-->
-<!--    <h2><span class="bg-light">新規会員登録<span></h2>-->
-<!--  </div>-->
-<!--  <div class="col-md-8 offset-md-1 mt-5">-->
-<!--    <#%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>-->
-<!--      <#%= render "public/shared/error_messages", resource: resource %>-->
-<!-- <table class="table table-borderless">-->
-<!--   <tr>-->
-<!--     <td>名前<td>-->
-<!--     <td>-->
-<!--       <#%=f.label :"(姓)" %>-->
-<!--     　<#%=f.text_field :last_name, autofocus: true, placeholder: "山田" %>-->
-<!--     </td>-->
-<!--     <td>-->
-<!--       <#%=f.label :"(名)" %>-->
-<!--       <#%=f.text_field :first_name, autofocus: true, placeholder: "花子" %>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!--   <tr>-->
-<!--     <td>フリガナ</td>-->
-<!--     <td>-->
-<!--       <#%=f.label :"(セイ)" %>-->
-<!--       <#%=f.text_field :last_name_kana, autofocus: true, placeholder: "ヤマダ" %>-->
-<!--     </td>-->
-<!--     <td>-->
-<!--       <#%=f.label :"(メイ)" %>-->
-<!--       <#%=f.text_field :first_name_kana, autofocus: true, placeholder: "ハナコ"  %>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!--   <tr>-->
-<!--     <td>ユーザーネーム<td>-->
-<!--     <td>-->
-<!--       <#%=f.label :"ユーザーネーム(英数字のみ)" %>-->
-<!--     　<#%=f.text_field :user_name, autofocus: true, placeholder: "hana0715" %>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!--   <tr>-->
-<!--     <td>-->
-<!--       <#%= f.label :"メールドレス" %>-->
-<!--     </td>-->
-<!--     <td>-->
-<!--        <#%= f.email_field :email, autofocus: true, autocomplete: true, placeholder: "sample@example.com" %>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!--   <tr>-->
-<!--     <td>-->
-<!--       <#%= f.label :"電話番号(ハイフンなし)" %>-->
-<!--     </td>-->
-<!--     <td>-->
-<!--       <#%= f.text_field :phone_number, autofocus: true, placeholder: "0000000000" %>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!--   <tr>-->
-<!--     <td><#%= f.label :"パスワード（6文字以上）" %></td>-->
-<!--     <td><#%= f.password_field :password %>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!--   <tr>-->
-<!--     <td><#%= f.label :"パスワード（確認用）" %></td>-->
-<!--     <td>-->
-<!--      <#%= f.password_field :password_confirmation %>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!--   <tr>-->
-<!--     <td></td>-->
-<!--     <td></td>-->
-<!--     <td>-->
-<!--       <div class="actions">-->
-<!--         <#%= f.submit "新規登録", class: 'btn btn-success btn-sm' %>-->
-<!--       </div>-->
-<!--     </td>-->
-<!--   </tr>-->
-<!-- </table>-->
-<!--   <#% end %>-->
-<!--  </div>-->
-<!--  <div class="col-md-8 offset-md-1 mt-5">-->
-<!--   <h4><span class="bg-light">既に登録済みの方<span></h4>-->
-<!--   <p class="mt-3">-->
-<!--    <span>-->
-<!--     <#%= link_to "こちら", new_session_path(resource_name) %>-->
-<!--    </span>-->
-<!--     からログインしてください-->
-<!--   </p>-->
-<!--  </div>-->
-<!-- </div>-->
-<!--</div>-->

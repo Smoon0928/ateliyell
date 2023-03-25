@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="card mb-3 col-md-12 mt-5" >
+    <div class="card mb-1 col-md-12 mt-5" >
       <div class="row no-gutters">
         <div class="col-md-4 mt-4">
           <%= image_tag @user.get_profile_image(200, 200) %>
@@ -8,57 +8,68 @@
           <div class="col-md-8">
             <div class="card-body">
               <h5 class="card-title"> <%= @user.user_name %></h5>
-            <div class="card-text">
-              <% if @user.self_introduction.present? %>
+              <div class="card-text">
+                <% if @user.self_introduction.present? %>
+                  <div class="mb-3">
+                    <h6 class="m-0">Introduction</h6>
+                    <%= @user.self_introduction %>
+                  </div>
+                <% end %>
                 <div class="mb-3">
-                  <h6 class="m-0">Introduction</h6>
-                  <%= @user.self_introduction %>
+                  <h6 class="m-0">Post count</h6>
+                  <%= @user.products.count %>
                 </div>
-              <% end %>
-              <div class="mb-3">
-                <h6 class="m-0">Post count</h6>
-                <%= @user.products.count %>
-              </div>
-              <div class="row">
-                <div class="col-12 col-md-6">
-                  <small class="text-black-50">
-                    Follow: <%= link_to @user.followings.count, followings_friend_path(@user.id) %>
-            	    </small>
-                </div>
-                <div class="col-12 col-md-6">
-                  <small class="text-black-50">
-                    Follower: <%= link_to @user.followers.count, followers_friend_path(@user.id) %>
-                  </small>
-                </div>
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <small class="text-black-50">
+                      Follow: <%= link_to @user.followings.count, followings_friend_path(@user.id) %>
+              	    </small>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <small class="text-black-50">
+                      Follower: <%= link_to @user.followers.count, followers_friend_path(@user.id) %>
+                    </small>
+                  </div>
                   <%= link_to "退会手続きをする",admin_admin_unsubscribe_path(@user.id), class: "btn btn-danger" %>
+                </div>
               </div>
             </div>
-            </div>
           </div>
-        </div>
       </div>
+    </div>
 
- <div class="container mt-5">
-    <div class="row row-cols-1 row-cols-3">
-      <% @products.each do |product| %>
-        <div class="col mt-4">
-          <div class="card">
-            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-              <% if product.images.first.present? %>
-                <%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>
-              <% end %>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"><%=link_to product.name.truncate(10), admin_product_path(product.id) %></h5>
-              <p class="card-text"><%=product.introduction.truncate(10) %></p>
-              <%= link_to "作品の詳細を見る",admin_product_path(product.id), class: "btn bgleft" %>
-              <td>
-                <i class="fas fa-heart"style="color: red;"></i><%= product.likes.count %>
-                <i class="far fa-comment"></i><%= product.comments.count %>
-              </td>
+   <div class="container mt-5">
+      <div class="row row-cols-1 row-cols-3">
+        <% @products.each do |product| %>
+          <div class="col mt-2 mb-3">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <% if product.images.first.present? %>
+                  <%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>
+                <% end %>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%=link_to product.name.truncate(10), admin_product_path(product.id) %></h5>
+                <p class="card-text"><%=product.introduction.truncate(10) %></p>
+                <%= link_to "作品の詳細を見る",admin_product_path(product.id), class: "btn bgleft" %>
+                <td>
+                  <i class="fas fa-heart"style="color: red;"></i><%= product.likes.count %>
+                  <i class="far fa-comment"></i><%= product.comments.count %>
+                </td>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
+</div>
+<div class="container"> 
+  <div class="row p-3">
+   <div class="col-md-6 offset-md-3 py-2">
+     <div class="text-center">
+       <%= paginate @products %>
+     </div>
+   </div>
+ </div>
+</div>

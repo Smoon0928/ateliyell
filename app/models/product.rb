@@ -15,7 +15,6 @@ class Product < ApplicationRecord
   
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :like_count, -> {order(likes: :desc)}
   
   def liked_by?(user)
     likes.exists?(user_id: user.id)

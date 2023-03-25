@@ -11,7 +11,11 @@
     <% genres.each do |genre| %>
       <tr>
           <td class="align-middle">
-           <%= link_to  genre.name, products_path(genre_id: genre.id) %>
+            <% if params[:sort_type].present? %>
+              <%= link_to genre.name, products_path(genre_id: genre.id, sort_type: params[:sort_type]) %>
+            <% else %>
+              <%= link_to genre.name, products_path(genre_id: genre.id) %>
+            <% end %>
           </td>
       </tr>
     <% end %>

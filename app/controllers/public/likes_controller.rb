@@ -1,4 +1,5 @@
 class Public::LikesController < ApplicationController
+  #before_action :authenticate_user!, except: [:top]
   before_action :authenticate_user!, only: [:create, :destroy, :show]
   
   def create

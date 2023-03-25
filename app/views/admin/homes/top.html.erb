@@ -1,2 +1,31 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class='container px-5 px-sm-0'>
+      <div class='row mt-3 ml-5'>
+        <h4><span class="bg-light">注目の人気投稿(いいね数順：Top12)<span></h4>
+      </div>
+        <div class='col-md-12 pl-5 mt-2'>
+         <div class="row row-cols-1 row-cols-4">
+           <% @products.first(12).each do |product| %>
+             <div class="col mt-4 mb-4">
+                <div class="card">
+                  <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                    <% if product.images.first.present? %>
+                      <%= image_tag product.images.first, size: "200x200", class: "img-fluid" %>
+                    <% end %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%=link_to product.name.truncate(10), product_path(product.id) %></h5>
+                    <p class="card-text"><%=product.introduction.truncate(10) %></p>
+                    <%= link_to "作品の詳細を見る",product_path(product.id), class: "btn bgleft" %>
+                    <td>
+                      <i class="fas fa-heart"style="color: red;"></i><%= product.likes.count %>
+                      <i class="far fa-comment"></i><%= product.comments.count %>
+                      <%= product.user.user_name %>
+                    </td>
+                  </div>
+                </div>
+             </div>
+           <% end %>
+       </div>
+     </div>

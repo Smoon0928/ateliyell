@@ -4,6 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
+  validates :phone_number, presence: true, format: { with: /\A\d{10}\z/ }
+  validates :user_name, length: { minimum: 2, maximum: 10 }, presence: true
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+  validates :first_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+  
   has_one_attached :profile_image
   has_many :products, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -16,7 +23,7 @@ class User < ApplicationRecord
   has_many :followings, through: :friends, source: :follow
   has_many :followers, through: :reverse_of_friends, source: :follower
   
-  #validates :user_name, length: { minimum: 2, maximum: 10 } presence: true
+  
   
   def get_profile_image(width, height)
     unless profile_image.attached?

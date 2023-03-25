@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:top]
   def index
     @products = Product.page(params[:page])
   end
