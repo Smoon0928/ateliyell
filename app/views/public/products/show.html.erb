@@ -42,19 +42,19 @@
           </div>
         <% end %>
     
-        <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
+        <% if user_signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
           <div id="like_buttons_<%= @product.id %>">
             <%= render "public/likes/likes",product: @product %>
           </div>
         <% end %>
         
-        <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
+        <% if user_signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
           <div id="friend_buttons_<%= @user.id %>">
             <%= render "public/friends/friends",user: @user %>
           </div>
         <% end %>
         <br>
-        <% if signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
+        <% if user_signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
           <%= form_with model: [@product, @comment] do |f| %>
             <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
             <%= button_tag type: "submit", class: "btn btn-success mt-1" do %>

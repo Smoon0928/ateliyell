@@ -1,0 +1,6 @@
+<th>followers</th>
+<th>
+    <%= link_to followers_friend_path(user.id) do %>
+        <%= user.followers.count %>
+    <% end %>
+</th>

@@ -1,5 +1,5 @@
 class Public::FriendsController < ApplicationController
-  #before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user_admin!, except: [:top]
   def create
     current_user.follow(params[:user_id])
     @user = User.find(params[:user_id])

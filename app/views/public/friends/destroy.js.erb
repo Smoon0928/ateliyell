@@ -1,2 +1,3 @@
 $('#friend_buttons_<%= @user.id %>').html("<%= j(render "public/friends/friends", user: @user) %>");
-$('#user_info').html("<%= j(render "public/users/info", user: @user) %>");
+$('#follow_count').html("<%= j(render 'public/users/follow',user: @user)%>");
+$('#follower_count').html("<%= j(render 'public/users/follower',user: @user)%>");

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  validates :phone_number, presence: true, format: { with: /\A\d{10}\z/ }
+  validates :phone_number, presence: true
   validates :user_name, length: { minimum: 2, maximum: 10 }, presence: true
   validates :last_name, presence: true
   validates :first_name, presence: true

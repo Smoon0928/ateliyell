@@ -8,19 +8,11 @@
 	  <th>introduction</th>
 	  <th><%= user.self_introduction %></th>
   </tr>
-  <tr>
-	  <th>follows</th>
-	  <th><%= link_to followings_friend_path(user.id) do %>
-	        <%= user.followings.count %>
-	      <% end %>
-	   </th>
-  </tr> 
-  <tr>
-	  <th>followers</th>
-	  <th><%= link_to followers_friend_path(user.id) do %>
-	        <%= user.followers.count %>
-	      <% end %>
-	  </th>
+  <tr id="follow_count">
+    <%= render 'public/users/follow',user:@product.user %>
+  </tr>
+  <tr id="follower_count">
+    <%= render 'public/users/follower',user:@product.user %>
   </tr>
 </table>
 

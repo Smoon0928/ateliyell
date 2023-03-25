@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :set_user, only: [:followings, :followers]
-  #before_action :authenticate_user!, except: [:top]
+  before_action :authenticate_user_admin!, except: [:top]
   
   def index
     @users = User.all

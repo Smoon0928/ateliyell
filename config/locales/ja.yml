@@ -20,9 +20,7 @@
           previous: "&lsaquo; 前"
           next: "次 &rsaquo;"
           truncate: "..."
-    #  views:
-    #     registration:
-    #       first_name: "姓"
+    
           
                     
     
