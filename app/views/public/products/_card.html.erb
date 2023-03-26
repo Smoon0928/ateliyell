@@ -12,11 +12,11 @@
         <%= link_to product_path(product.id), class: "btn bgleft" do %>
           <span>作品の詳細を見る</span>
         <% end %>
-        <td>
+        <div class="card-text">
           <i class="fas fa-heart"style="color: red;"></i><%= product.likes.count %>
           <i class="far fa-comment"></i><%= product.comments.count %>
           <%= product.user.user_name %>
-        </td>
+        </div>
       </div>
     </div>
   </div>
