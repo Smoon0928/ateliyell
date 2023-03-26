@@ -1,15 +1,21 @@
-<div class='container'>
- <div class='row'>
-  <h4><span class="bg-light">ステータス編集<span></h4>
+<div class="container px-5 px-sm-0">
+ <div class="row" style="margin-top:25px;">
+  <div class="col-sm-10 px-sm-0 mx-auto mb-5">
+    <h4><span class="bg-light">ステータス編集<span></h4>
   </div>
 </div>
 <div class='container'>
  <div class='row'>
   <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <%=form_with model: @product do |f| %>
-
-   <%= render partial: "public/products/statusform", locals: { form: f } %>
-    
-    <%=f.submit '変更を保存' %>
-
+    <%=form_with url:admin_product_path(@product), model: @product do |form| %>
+      <%= form.label(:public, for: nil, class:'product-status__label') do %>
+      <%= form.radio_button :status, :public %>
+      <%= I18n.t('activerecord.attributes.product.statuses.public') %>
+    <% end %>
+    <%= form.label(:private, for: nil, class:'product-status__label') do %>
+      <%= form.radio_button :status, :private %>
+      <%= I18n.t('activerecord.attributes.product.statuses.private') %>
+    <% end %>
+    <%=form.submit '変更を保存' %>
+<div class="spacer" style="height: 60px;"></div>
 <% end %>

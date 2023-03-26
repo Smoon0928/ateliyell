@@ -25,7 +25,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(admin_product_params)
-      flash[:success] = "商品情報を更新しました"
+      flash[:notice] = "作品ステータスを更新しました"
       redirect_to admin_product_path(@product)
     else
       render 'edit'

@@ -10,3 +10,12 @@ ja:
         user_name: "ユーザーネーム"
         password: "パスワード"
         email: "メールアドレス"
+  devise:
+    sessions:
+      admin:
+        signed_in:  "管理者ログインに成功しました"
+        signed_out: "管理者ログアウトに成功しました"
+  devise:
+    registrations:
+      user:
+        signed_up: "新規会員登録に成功しました"

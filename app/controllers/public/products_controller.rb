@@ -45,11 +45,6 @@ class Public::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    # if @product.save
-    #   redirect_to '/products'
-    # else
-    #   render :new
-    # end
     
     respond_to do |format|
       if @product.save
@@ -62,17 +57,16 @@ class Public::ProductsController < ApplicationController
     end
   end
 
-  
-  
   def update
     @product = Product.find(params[:id])
     if @product.update(update_product_params)
+      flash[:notice] = "作品情報を更新しました"
       redirect_to product_path(@product.id)
     else
       render :edit
     end
   end
-  
+
   def upload_image
       @image_blob = create_blob(params[:image])
       respond_to do |format|
@@ -103,13 +97,16 @@ class Public::ProductsController < ApplicationController
   
   def edit
     @product = Product.find(params[:id])
+    
   end
   
   def destroy
     product = Product.find(params[:id])
     
-    product.destroy
+    if product.destroy
     redirect_to '/products'
+    flash[:notice] = "作品を削除しました"
+    end
   end
   
   def private

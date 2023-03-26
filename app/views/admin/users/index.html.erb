@@ -15,14 +15,16 @@
        </thead>
          <tbody>
            <% @users.each do |user| %>
-            <tr>
-              <td><%= user.id %></td>
-              <td><%= link_to user.user_name,admin_user_path(user.id) %></td>
-              <td><%= user.email %></td>
-              <td><%= user.followers.count %></td>
-              <td><%=
-              user.products.count %></td>
-            </tr>
+             <% if user.user_name != "guestuser" %>
+               <tr>
+                 <td><%= user.id %></td>
+                 <td><%= link_to user.user_name,admin_user_path(user.id) %></td>
+                 <td><%= user.email %></td>
+                 <td><%= user.followers.count %></td>
+                 <td><%=
+                 user.products.count %></td>
+               </tr>
+             <% end %>
            <% end %>
 　       </tbody>
       </table>
