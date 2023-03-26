@@ -7,7 +7,10 @@
         user:
           signed_in: "ログインに成功しました"
           signed_out: "ログアウトに成功しました"  
-    
+    devise:
+      sessions:
+        admin:
+          signed_in: "管理者ログインに成功しました"
     enums:
       product:
         status_method:
