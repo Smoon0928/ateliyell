@@ -38,7 +38,8 @@
                 <div class="col-12 col-md-3">
                   <% if signed_in? && @user == current_user %>
                   <small class="text-black-50">
-                    Private: <%= link_to @products.status_private.count, private_user_path(@user.id) %>
+                    Private: <%= link_to @private_products.count, private_user_path(@user.id) %>
+                    <!--Private: <%#= link_to @products.status_private.count, private_user_path(@user.id) %>-->
                   </small>
                   <% end %>
                 </div>
