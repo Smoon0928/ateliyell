@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
     
   def show
     @user = User.find(params[:id])
-    @products = @user.products.where(status: 0)
+    @products = @user.products.where(status: 0).page(params[:page]).per(9)
     @private_products = @user.products.where(status: 1)
   end
 

@@ -39,7 +39,6 @@
                   <% if signed_in? && @user == current_user %>
                   <small class="text-black-50">
                     Private: <%= link_to @private_products.count, private_user_path(@user.id) %>
-                    <!--Private: <%#= link_to @products.status_private.count, private_user_path(@user.id) %>-->
                   </small>
                   <% end %>
                 </div>
@@ -65,3 +64,13 @@
        </div>
     </div>
   </div>
+  <div class="container"> 
+  <div class="row p-3">
+   <div class="col-md-6 offset-md-3 py-2">
+     <div class="text-center">
+       <%= paginate @products %>
+     </div>
+   </div>
+ </div>
+ </div>
+      
