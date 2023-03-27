@@ -11,6 +11,10 @@
       sessions:
         admin:
           signed_in: "管理者ログインに成功しました"
+    devise:
+      registrations:
+        user:
+          signed_up: "新規会員登録ログインに成功しました"
     enums:
       product:
         status_method:
