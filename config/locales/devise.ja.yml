@@ -19,3 +19,8 @@ ja:
     registrations:
       user:
         signed_up: "新規会員登録に成功しました"
+  devise:
+    sessions:
+      user:
+        signed_out: "ログアウトしました"
+        signed_in:  "ログインしました"

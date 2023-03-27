@@ -49,7 +49,7 @@
           </div>
         <% end %>
         <br>
-        <% if user_signed_in? && @user != current_user && current_user.user_name != 'guestuser' %>
+        <% if user_signed_in? && current_user.user_name != 'guestuser' %>
           <%= form_with model: [@product, @comment] do |f| %>
             <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
             <%= button_tag type: "submit", class: "btn btn-success mt-1" do %>
@@ -68,7 +68,7 @@
             <% if comment.user == current_user %>
               <%= link_to "削除", product_comment_path(comment.product, comment), method: :delete %>
             <% end %>
-          <% end %>
+        <% end %>
         <% end %>
       </div>
     </div>
