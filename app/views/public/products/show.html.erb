@@ -21,14 +21,14 @@
         <% end %>
       </div>
       <div class='col-md-5'>
-        <p class="h5 mb-0"></p>作品名:</p>
-        <p class="h5 mb-4"><%= @product.name %></p>
-        <p class="h5 mb-0"></p>ジャンル名:</p>
-        <p class="h5 mb-4"><%= @product.genre.name %></p>
-        <p class="h5 mb-0"></p>作品説明 :</p>
-        <p class="h5 mb-4"><%= @product.introduction %></p>
-        <p class="h5 mb-0"></p>コメント件数：</p>
-        <p class="h5 mb-4"><%= @product.comments.count %></p>
+        <p class="h7 mb-0" style="color: #5E5855;">作品名:</p>
+        <p class="h6 mb-4"><%= @product.name %></p>
+        <p class="h7 mb-0" style="color: #5E5855;">ジャンル名:</p>
+        <p class="h6 mb-4"><%= @product.genre.name %></p>
+        <p class="h7 mb-0" style="color: #5E5855;">作品説明 :</p>
+        <p class="h6 mb-4"><%= @product.introduction %></p>
+        <p class="h7 mb-0" style="color: #5E5855;">コメント件数：</p>
+        <p class="h6 mb-4"><%= @product.comments.count %></p>
         
         <% if user_signed_in? && current_user.id == @product.user_id %>
           <div class="current_user action">
@@ -58,17 +58,28 @@
           <% end %>
         <% end %>
       </div>
+      
       <div class="comment-wrapper mb-10">
         <% if @product.comments.any? %>
-          <p class="mt-5">コメント一覧</p>
+          <p class="h5 mb-0"></p>コメント一覧</p>
           <% @product.comments.each do |comment| %>
-            <p><%= image_tag comment.user.get_profile_image(100,100) %></p>
-            <%= comment.user.user_name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-            <% if comment.user == current_user %>
-              <%= link_to "削除", product_comment_path(comment.product, comment), method: :delete %>
-            <% end %>
-        <% end %>
+            <div class="comment-container mb-3">
+              <div class="comment-user-info">
+                <%= image_tag comment.user.get_profile_image(70,70) %>
+                <%= comment.comment %>
+              </div>
+              <div class="comment-content">
+                <div class="comment-text">
+                  <%= comment.user.user_name %>
+                </div>
+                <% if comment.user == current_user %>
+                  <div class="comment-delete">
+                    <%= link_to "削除", product_comment_path(comment.product, comment), method: :delete %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
