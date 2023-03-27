@@ -1,26 +1,12 @@
 ja:
-  activerecord:
-    attributes:
-      user:
-        first_name: "名前"
-        last_name: "姓"
-        first_name_kana: "名前(カナ)"
-        last_name_kana: "姓(カナ)"
-        phone_number: "電話番号"
-        user_name: "ユーザーネーム"
-        password: "パスワード"
-        email: "メールアドレス"
-  devise:
-    sessions:
-      admin:
-        signed_in:  "管理者ログインに成功しました"
-        signed_out: "管理者ログアウトに成功しました"
-  devise:
-    registrations:
-      user:
-        signed_up: "新規会員登録に成功しました"
-  devise:
+  devise: 
     sessions:
       user:
         signed_out: "ログアウトしました"
         signed_in:  "ログインしました"
+      admin:
+        signed_in: "管理者ログインに成功しました"
+        signed_out: "管理者ログアウトに成功しました"
+    registrations:
+      user:
+        signed_up: "新規会員登録ログインに成功しました"

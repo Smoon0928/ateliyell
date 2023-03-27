@@ -2,19 +2,6 @@
     errors:
       messages:
         not_saved: "保存できませんでした"
-    devise:
-      sessions:
-        user:
-          signed_in: "ログインに成功しました"
-          signed_out: "ログアウトに成功しました"  
-    devise:
-      sessions:
-        admin:
-          signed_in: "管理者ログインに成功しました"
-    devise:
-      registrations:
-        user:
-          signed_up: "新規会員登録ログインに成功しました"
     enums:
       product:
         status_method:
@@ -26,6 +13,15 @@
                 statuses:
                     public: "公開"
                     private: "非公開"
+            user:
+                first_name: "名前"
+                last_name: "姓"
+                first_name_kana: "名前(カナ)"
+                last_name_kana: "姓(カナ)"
+                phone_number: "電話番号"
+                user_name: "ユーザーネーム"
+                password: "パスワード"
+                email: "メールアドレス"
     views:
         pagination:
           first: "&laquo; 最初"
