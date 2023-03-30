@@ -195,6 +195,17 @@ p{
   transform: scaleX(1);
 }
 
-
-
-
+// .n-circle {
+//   position: absolute;
+//   padding-left: 1rem;
+//   padding-top: 0rem;
+//   color: #efa04c;
+// }
+.n-circle {
+  position: absolute;
+  left: 2px; /* 左に2mm */
+  top: 4px; /* 上に3mm */
+  font-size: 1.2em; /* 2mm程度大きな円に */
+  padding: 0.2em; /* 円の中央配置 */
+  color: #efa04c;
+}

@@ -4,6 +4,8 @@ class Public::FriendsController < ApplicationController
     current_user.follow(params[:user_id])
     @user = User.find(params[:user_id])
     #redirect_to request.referer
+    #通知機能の為に下記追加
+    @user.create_notification_follow!(current_user)
   end
   
   def destroy

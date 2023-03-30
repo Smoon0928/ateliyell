@@ -6,7 +6,13 @@ class Public::CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     comment.user_id = current_user.id
     comment.product_id = product.id
+    #下の変数通知機能の為に追加
+    @comment = Comment.new(comment_params)
+    @product = @comment.product
     if comment.save
+      #通知機能の為に追加
+      @product=product
+      @product.create_notification_comment!(current_user,@comment.id)
        flash[:notice] = "コメント投稿に成功しました"
        redirect_to product_path(product)
     else
@@ -14,18 +20,6 @@ class Public::CommentsController < ApplicationController
        redirect_to product_path(product)
     end
   end
-  
-  # def destroy
-  #   Comment.find(params[:id]).destroy
-  #   ##redirect_to product_path(params[:product_id])
-  #   if comment.destroy
-  #     flash[:notice] = "コメントの削除に成功しました"
-  #     redirect_to product_path(product)
-  #   else
-  #     flash[:notice] = "コメント削除できませんでした"
-  #     redirect_to product_path(product)
-  #   end
-  # end
   
   def destroy
   comment = Comment.find_by(id: params[:id])

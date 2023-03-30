@@ -39,6 +39,8 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy, :show]
       resources :comments, only: [:create, :destroy]
     end
+     #通知機能の為に下記追加
+      resources :notifications, only: :index
     post 'products/upload_image' => 'products#upload_image'
     resources :users,only:[:index,:show,:edit,:update,:destroy]do
       

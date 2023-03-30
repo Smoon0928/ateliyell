@@ -8,6 +8,8 @@ class Public::LikesController < ApplicationController
       like = current_user.likes.new(product_id: product.id)
       like.save
       #redirect_to product_path(product)
+      #通知機能の為に追加
+      product.create_notification_like!(current_user)
   end
   
   def destroy

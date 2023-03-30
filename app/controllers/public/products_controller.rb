@@ -139,4 +139,5 @@ class Public::ProductsController < ApplicationController
       content_type: uploading_file.content_type
   end
   
+  
 end

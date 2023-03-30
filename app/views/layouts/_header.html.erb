@@ -34,6 +34,17 @@
         <li class="nav-item">
           <%= link_to 'My page', user_path(current_user.id), class: 'nav-link text-white' %>
         </li>
+        <%= link_to notifications_path do %>
+          <% if unchecked_notifications.any? %>
+            <span class="fa-stack">
+              <i class="far fa-bell fa-lg" style="color: white; font-size: 1.5em;"></i>
+              <i class="fas fa-circle n-circle fa-stack-1x"></i>
+            </span>
+          <% else %>
+            <i class="far fa-bell fa-lg" style="color: white; font-size: 1.5em;"></i>
+          <% end %>
+        <% end %>
+        
       <% else %>
         <li>
           <li class="nav-item">
@@ -72,5 +83,6 @@
           <% end %>
         <% end %>
       </div>
+      
     </header>
     
